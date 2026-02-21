@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "E-commerce website for selling products online",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-product-catalog-page-that-displays-all-available-products-with-images-names-descriptions-and-prices",
+      "title": "Create a product catalog page that displays all available products with images, names, descriptions, and prices",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-shopping-cart-system-where-users-can-add-products-view-cart-contents-and-update-quantities",
+      "title": "Implement a shopping cart system where users can add products, view cart contents, and update quantities",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-checkout-flow-that-collects-customer-information-and-processes-orders",
+      "title": "Create a checkout flow that collects customer information and processes orders",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-an-admin-interface-to-manage-products-add-edit-delete-and-view-orders",
+      "title": "Build an admin interface to manage products (add, edit, delete) and view orders",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-internet-identity-authentication-to-restrict-admin-access",
+      "title": "Implement Internet Identity authentication to restrict admin access",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-design-a-professional-cohesive-visual-theme-with-warm-earth-tones-clean-typography-and-spacious-layouts-that-create-a-trustworthy-shopping-experience",
+      "title": "Design a professional, cohesive visual theme with warm earth tones, clean typography, and spacious layouts that create a trustworthy shopping experience",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-informational-section-to-the-admin-products-page-explaining-how-to-upload-products-including-clicking-the-add-product-button-filling-in-the-product-form-with-name-description-price-selecting-an-image-file-max-5mb-and-clicking-add-product-to-save",
+      "title": "Add an informational section to the admin products page explaining how to upload products, including: clicking the 'Add Product' button, filling in the product form with name/description/price, selecting an image file (max 5MB), and clicking 'Add Product' to save",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create e-commerce website with product catalog and online sales capability",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Business Store",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

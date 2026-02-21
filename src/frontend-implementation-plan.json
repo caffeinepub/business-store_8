@@ -1,0 +1,24 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add product upload instructions to admin interface",
+  "requirements": [
+    {
+      "id": "REQ-7",
+      "summary": "Add an informational section to the admin products page explaining how to upload products, including the complete workflow with image size limits",
+      "acceptanceCriteria": [
+        "Instructions are clearly visible on the AdminProducts page",
+        "Instructions explain the complete product upload workflow step-by-step",
+        "Instructions mention the 5MB image size limit",
+        "Instructions are styled consistently with the existing warm earth tone design theme"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/AdminProducts.tsx",
+          "operation": "modify",
+          "description": "Add an informational section at the top of the AdminProducts page that displays product upload instructions. The section should explain: (1) clicking the 'Add Product' button to open the form, (2) filling in product details including name, description, and price, (3) selecting an image file with a maximum size of 5MB, and (4) clicking 'Add Product' to save. Style the instructions using existing UI components and the warm earth tone color scheme to ensure visual consistency with the page. Position the instructions prominently above the product grid so users see them immediately upon visiting the admin products page."
+        }
+      ]
+    }
+  ]
+}

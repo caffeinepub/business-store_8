@@ -1,2 +1,3 @@
-# business-store_8
-Exported from Caffeine project: Business Store
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`
