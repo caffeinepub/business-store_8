@@ -1,64 +1,44 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 5,
-  "summary": "E-commerce website for selling products online",
-  "architectural_notes": [],
+  "projectStateVersion": 3,
+  "summary": "E-commerce website with admin dashboard for product management",
+  "architectural_notes": [
+    "E-commerce site with admin dashboard",
+    "Product management system (add, edit, delete products)",
+    "Products stored in backend canister"
+  ],
   "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-create-a-product-catalog-page-that-displays-all-available-products-with-images-names-descriptions-and-prices",
-      "title": "Create a product catalog page that displays all available products with images, names, descriptions, and prices",
+      "id": "feature-design-and-implement-a-new-visual-theme-for-the-website-with-a-distinct-aesthetic-that-differs-from-the-current-warm-earth-tones-including-updated-color-palette-typography-spacing-and-component-styling",
+      "title": "Design and implement a new visual theme for the website with a distinct aesthetic that differs from the current warm earth tones, including updated color palette, typography, spacing, and component styling",
       "reqIds": [
-        "REQ-1"
+        "REQ-8"
       ],
       "version": 1
     },
     {
-      "id": "feature-implement-a-shopping-cart-system-where-users-can-add-products-view-cart-contents-and-update-quantities",
-      "title": "Implement a shopping cart system where users can add products, view cart contents, and update quantities",
+      "id": "feature-update-the-product-catalog-page-layout-and-structure-to-improve-visual-appeal-and-user-experience-while-maintaining-all-existing-functionality-viewing-products-adding-to-cart",
+      "title": "Update the product catalog page layout and structure to improve visual appeal and user experience while maintaining all existing functionality (viewing products, adding to cart)",
       "reqIds": [
-        "REQ-2"
+        "REQ-9"
       ],
       "version": 1
     },
     {
-      "id": "feature-create-a-checkout-flow-that-collects-customer-information-and-processes-orders",
-      "title": "Create a checkout flow that collects customer information and processes orders",
+      "id": "feature-redesign-the-admin-dashboard-interface-including-the-products-management-page-and-orders-page-to-improve-usability-and-visual-consistency-with-the-new-theme",
+      "title": "Redesign the admin dashboard interface including the products management page and orders page to improve usability and visual consistency with the new theme",
       "reqIds": [
-        "REQ-3"
+        "REQ-10"
       ],
       "version": 1
     },
     {
-      "id": "feature-build-an-admin-interface-to-manage-products-add-edit-delete-and-view-orders",
-      "title": "Build an admin interface to manage products (add, edit, delete) and view orders",
+      "id": "feature-update-the-checkout-and-order-confirmation-pages-to-match-the-new-interface-design-while-preserving-all-existing-functionality",
+      "title": "Update the checkout and order confirmation pages to match the new interface design while preserving all existing functionality",
       "reqIds": [
-        "REQ-4"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-implement-internet-identity-authentication-to-restrict-admin-access",
-      "title": "Implement Internet Identity authentication to restrict admin access",
-      "reqIds": [
-        "REQ-5"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-design-a-professional-cohesive-visual-theme-with-warm-earth-tones-clean-typography-and-spacious-layouts-that-create-a-trustworthy-shopping-experience",
-      "title": "Design a professional, cohesive visual theme with warm earth tones, clean typography, and spacious layouts that create a trustworthy shopping experience",
-      "reqIds": [
-        "REQ-6"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-an-informational-section-to-the-admin-products-page-explaining-how-to-upload-products-including-clicking-the-add-product-button-filling-in-the-product-form-with-name-description-price-selecting-an-image-file-max-5mb-and-clicking-add-product-to-save",
-      "title": "Add an informational section to the admin products page explaining how to upload products, including: clicking the 'Add Product' button, filling in the product form with name/description/price, selecting an image file (max 5MB), and clicking 'Add Product' to save",
-      "reqIds": [
-        "REQ-7"
+        "REQ-11"
       ],
       "version": 1
     }
@@ -66,12 +46,11 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Create e-commerce website with product catalog and online sales capability",
+      "summary": "Change/redesign website interface",
       "reqIds": [],
       "status": "pending"
     }
   ],
-  "gameProjectType": "none",
   "projectName": "Business Store",
   "clarification_mode": "instant",
   "clarification_rounds": 0

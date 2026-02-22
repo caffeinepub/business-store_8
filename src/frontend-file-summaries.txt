@@ -1,17 +1,17 @@
 {
-  "frontend/src/index.css": "Global styles with warm earth tone OKLCH color system for light and dark modes, custom typography settings with Inter font family.",
-  "frontend/tailwind.config.js": "Tailwind configuration extended with earth tone color palette, custom shadows, Inter font family, and design tokens matching the OKLCH color system.",
+  "frontend/src/index.css": "Global styles with modern vibrant blue-cyan OKLCH color system for light and dark modes, Space Grotesk typography with bold headings and custom animations.",
+  "frontend/tailwind.config.js": "Tailwind configuration with vibrant blue-cyan color palette, Space Grotesk font family, enhanced shadows including glow effect, and fade-in animation.",
   "frontend/src/App.tsx": "Main application component with TanStack Router setup, theme provider, and routes for product catalog, checkout, order confirmation, and admin pages with guards.",
   "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations including products, cart, orders, checkout, admin mutations, user profiles, and helper function to convert image bytes to blob URLs.",
-  "frontend/src/components/Layout.tsx": "Main layout wrapper with sticky header navigation, logo, cart button, login button, conditional admin links, and footer with attribution.",
+  "frontend/src/components/Layout.tsx": "Main layout wrapper with gradient-enhanced sticky header navigation featuring logo with glow effect, active route indicators, cart button, login button, conditional admin links, and footer with attribution.",
   "frontend/src/components/LoginButton.tsx": "Internet Identity login/logout button component with loading states and query cache clearing on logout.",
   "frontend/src/components/UserProfileSetup.tsx": "Modal dialog for first-time user profile setup that prompts authenticated users without profiles to enter their name.",
-  "frontend/src/components/CartButton.tsx": "Shopping cart button with item count badge that opens a sheet panel displaying the cart contents.",
-  "frontend/src/components/Cart.tsx": "Shopping cart panel component displaying cart items with images, prices, total calculation, and checkout/clear cart actions.",
+  "frontend/src/components/CartButton.tsx": "Shopping cart button with gradient badge for item count, enhanced border styling with hover effects, and improved visual prominence in the navigation bar.",
+  "frontend/src/components/Cart.tsx": "Shopping cart panel component with gradient heading, enhanced cart item cards with hover effects, gradient total price display, and improved button styling with larger sizes and better visual feedback.",
   "frontend/src/components/AdminGuard.tsx": "Route guard component that checks authentication and admin status, displaying access denied messages for unauthorized users.",
-  "frontend/src/pages/ProductCatalog.tsx": "Product catalog page with hero banner, responsive product grid, add to cart functionality, and empty state handling.",
-  "frontend/src/pages/Checkout.tsx": "Checkout page with shipping information form, order summary, form validation, and order placement with navigation to confirmation.",
-  "frontend/src/pages/OrderConfirmation.tsx": "Order confirmation page displaying order details, purchased items with images, total price, and success message.",
-  "frontend/src/pages/AdminProducts.tsx": "Admin product management page with add/edit/delete functionality, image file upload handling, product grid display, and an informational alert section explaining the step-by-step product upload workflow including the 5MB image size limit.",
-  "frontend/src/pages/AdminOrders.tsx": "Admin orders page displaying all customer orders with expandable details, product lists, and order totals."
+  "frontend/src/pages/ProductCatalog.tsx": "Product catalog page with redesigned hero banner featuring gradient overlays and badge, responsive product grid with enhanced hover effects, gradient text headings, and larger card styling with improved visual hierarchy.",
+  "frontend/src/pages/Checkout.tsx": "Checkout page with gradient heading, two-column layout featuring enhanced form styling with larger inputs, sticky order summary card, gradient total price display, and improved visual hierarchy throughout.",
+  "frontend/src/pages/OrderConfirmation.tsx": "Order confirmation page with animated success icon, gradient heading, enhanced order details cards with improved spacing, gradient total price display, and modernized visual presentation.",
+  "frontend/src/pages/AdminProducts.tsx": "Admin product management page with gradient headings, enhanced card styling with hover effects, improved form layouts with larger inputs, informational alert section, and modernized dialog interfaces for add/edit operations using correct imageBytes parameter name for mutations.",
+  "frontend/src/pages/AdminOrders.tsx": "Admin orders page with gradient heading, accordion-based order display with enhanced card styling, icon badges, improved spacing, and detailed order information presentation with modern visual treatment."
 }

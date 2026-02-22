@@ -3,7 +3,7 @@ import { useGetOrder, imageBytesToUrl } from '../hooks/useQueries';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { CheckCircle2, Loader2 } from 'lucide-react';
+import { CheckCircle2, Loader2, ShoppingBag } from 'lucide-react';
 
 export default function OrderConfirmation() {
   const { orderId } = useParams({ from: '/order-confirmation/$orderId' });
@@ -13,7 +13,7 @@ export default function OrderConfirmation() {
     return (
       <div className="container max-w-3xl mx-auto py-12 px-4">
         <div className="flex items-center justify-center h-64">
-          <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+          <Loader2 className="h-10 w-10 animate-spin text-primary" />
         </div>
       </div>
     );
@@ -23,12 +23,12 @@ export default function OrderConfirmation() {
     return (
       <div className="container max-w-3xl mx-auto py-16 px-4">
         <div className="text-center space-y-6">
-          <h2 className="text-2xl font-semibold">Order not found</h2>
-          <p className="text-muted-foreground">
+          <h2 className="text-3xl font-bold">Order not found</h2>
+          <p className="text-muted-foreground text-lg">
             We couldn't find the order you're looking for.
           </p>
           <Link to="/">
-            <Button>Return to Store</Button>
+            <Button size="lg">Return to Store</Button>
           </Link>
         </div>
       </div>
@@ -37,38 +37,47 @@ export default function OrderConfirmation() {
 
   return (
     <div className="container max-w-3xl mx-auto py-12 px-4">
-      <div className="text-center mb-8">
-        <CheckCircle2 className="h-16 w-16 text-accent mx-auto mb-4" />
-        <h1 className="text-3xl font-bold mb-2">Order Confirmed!</h1>
-        <p className="text-muted-foreground">
-          Thank you for your purchase. Your order has been received.
+      <div className="text-center mb-10 animate-fade-in">
+        <div className="inline-flex p-6 rounded-full bg-accent/10 mb-6">
+          <CheckCircle2 className="h-20 w-20 text-accent" />
+        </div>
+        <h1 className="text-4xl font-bold mb-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          Order Confirmed!
+        </h1>
+        <p className="text-muted-foreground text-lg">
+          Thank you for your purchase. Your order has been received and is being processed.
         </p>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Order Details</CardTitle>
-          <CardDescription>Order #{order.id.toString()}</CardDescription>
+      <Card className="border-2">
+        <CardHeader className="pb-6">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="p-2 rounded-lg bg-primary/10">
+              <ShoppingBag className="h-5 w-5 text-primary" />
+            </div>
+            <CardTitle className="text-2xl">Order Details</CardTitle>
+          </div>
+          <CardDescription className="text-base">Order #{order.id.toString()}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="space-y-3">
-            <h3 className="font-semibold">Items Ordered</h3>
+          <div className="space-y-4">
+            <h3 className="font-semibold text-lg">Items Ordered</h3>
             {order.products.map((product, index) => {
               const imageUrl = imageBytesToUrl(product.image);
               return (
-                <div key={`${product.id}-${index}`} className="flex gap-4 p-3 rounded-lg border">
+                <div key={`${product.id}-${index}`} className="flex gap-4 p-4 rounded-xl border-2 bg-card hover:border-primary/30 transition-colors">
                   <img
                     src={imageUrl}
                     alt={product.name}
-                    className="w-20 h-20 object-cover rounded-md"
+                    className="w-24 h-24 object-cover rounded-lg"
                     onLoad={() => URL.revokeObjectURL(imageUrl)}
                   />
                   <div className="flex-1">
-                    <p className="font-medium">{product.name}</p>
-                    <p className="text-sm text-muted-foreground line-clamp-2">
+                    <p className="font-semibold text-lg mb-1">{product.name}</p>
+                    <p className="text-sm text-muted-foreground line-clamp-2 mb-2">
                       {product.description}
                     </p>
-                    <p className="text-lg font-semibold text-primary mt-1">
+                    <p className="text-xl font-bold text-primary">
                       ${(Number(product.price) / 100).toFixed(2)}
                     </p>
                   </div>
@@ -79,25 +88,27 @@ export default function OrderConfirmation() {
 
           <Separator />
 
-          <div className="space-y-2">
-            <div className="flex justify-between">
+          <div className="bg-muted/30 rounded-xl p-5 space-y-3">
+            <div className="flex justify-between text-base">
               <span className="text-muted-foreground">Subtotal</span>
-              <span>${(Number(order.total) / 100).toFixed(2)}</span>
+              <span className="font-semibold">${(Number(order.total) / 100).toFixed(2)}</span>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between text-base">
               <span className="text-muted-foreground">Shipping</span>
-              <span>Free</span>
+              <span className="font-semibold">Free</span>
             </div>
             <Separator />
-            <div className="flex justify-between text-lg font-semibold">
+            <div className="flex justify-between text-2xl font-bold">
               <span>Total</span>
-              <span className="text-primary">${(Number(order.total) / 100).toFixed(2)}</span>
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                ${(Number(order.total) / 100).toFixed(2)}
+              </span>
             </div>
           </div>
 
           <div className="pt-4">
             <Link to="/">
-              <Button className="w-full" size="lg">
+              <Button className="w-full h-14 text-lg font-bold shadow-soft hover:shadow-medium transition-all" size="lg">
                 Continue Shopping
               </Button>
             </Link>
@@ -107,4 +118,3 @@ export default function OrderConfirmation() {
     </div>
   );
 }
-

@@ -1,11 +1,13 @@
 # Specification
 
 ## Summary
-**Goal:** Add instructional content to the admin products page to guide users through the product upload process.
+**Goal:** Redesign the website interface with a new visual theme and updated layouts across all pages.
 
 **Planned changes:**
-- Add an informational section to the AdminProducts page explaining the product upload workflow
-- Include step-by-step instructions covering: clicking 'Add Product', filling the form fields, selecting an image (max 5MB), and saving
-- Style the instructions consistently with the existing warm earth tone design theme
+- Apply new color palette, typography, and component styling throughout the application
+- Update product catalog page layout with refreshed grid and product card designs
+- Redesign admin dashboard interface including products management and orders pages
+- Update checkout and order confirmation pages to match new design language
+- Ensure new theme works in both light and dark modes
 
-**User-visible outcome:** Admin users can view clear, on-page instructions explaining how to upload products, including all required steps and the image size limit.
+**User-visible outcome:** Users will experience a completely refreshed interface with a distinct new aesthetic, improved visual appeal, and enhanced usability while all existing functionality remains intact.

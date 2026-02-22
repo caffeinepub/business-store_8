@@ -1,37 +1,86 @@
 {
   "kind": "build_request",
-  "title": "Add product upload instructions to admin interface",
+  "title": "Redesign website interface",
+  "projectName": "Business Store",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-7",
-      "text": "Add an informational section to the admin products page explaining how to upload products, including: clicking the 'Add Product' button, filling in the product form with name/description/price, selecting an image file (max 5MB), and clicking 'Add Product' to save",
+      "id": "REQ-8",
+      "text": "Design and implement a new visual theme for the website with a distinct aesthetic that differs from the current warm earth tones, including updated color palette, typography, spacing, and component styling",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-final"
-        ],
-        "quotes": [
-          "how can i upload products"
+          "msg-20"
         ]
       },
       "acceptanceCriteria": [
-        "Instructions are clearly visible on the AdminProducts page",
-        "Instructions explain the complete product upload workflow step-by-step",
-        "Instructions mention the 5MB image size limit",
-        "Instructions are styled consistently with the existing warm earth tone design theme"
+        "New color scheme is applied consistently across all pages",
+        "Typography is updated with new font choices and sizing",
+        "Component styling (buttons, cards, forms) follows the new design language",
+        "Theme works in both light and dark modes",
+        "Navigation header reflects the new design",
+        "Product cards and catalog layout use the new styling"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Update the product catalog page layout and structure to improve visual appeal and user experience while maintaining all existing functionality (viewing products, adding to cart)",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-20"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Product grid layout is refreshed with new spacing and arrangement",
+        "Product cards have updated visual design",
+        "Hero banner section is redesigned or replaced",
+        "All existing product catalog functionality continues to work"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Redesign the admin dashboard interface including the products management page and orders page to improve usability and visual consistency with the new theme",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-20"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Admin products page has updated layout and styling",
+        "Admin orders page reflects the new design language",
+        "Product management forms and controls are visually updated",
+        "All admin functionality (add, edit, delete products, view orders) remains functional"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Update the checkout and order confirmation pages to match the new interface design while preserving all existing functionality",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-20"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Checkout form has updated styling",
+        "Order confirmation page reflects new design",
+        "Cart display and cart button match new theme",
+        "All checkout workflow functionality continues to work"
       ]
     }
   ],
   "constraints": [
-    "Do not modify the existing product upload functionality",
-    "Keep instructions concise and user-friendly",
-    "Maintain the existing layout and design patterns of the AdminProducts page"
+    "Do not modify backend logic or data structures",
+    "Preserve all existing functionality including authentication, cart operations, and admin features",
+    "Do not edit immutable frontend files: useInternetIdentity.ts, useInternetIdentity.tsx, useActor.ts, main.tsx, and components/ui directory"
   ],
   "nonGoals": [
-    "Changing the product upload form or validation logic",
-    "Adding new product fields or capabilities",
-    "Modifying backend product storage"
+    "Adding new features or functionality",
+    "Changing the backend API or data models",
+    "Modifying authentication or authorization logic",
+    "Adding new pages or routes"
   ],
   "imageRequirements": {
     "required": [],

@@ -2,9 +2,52 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-add-an-informational-section-to-the-admin-products-page-explaining-how-to-upload-products-including-clicking-the-add-product-button-filling-in-the-product-form-with-name-description-price-selecting-an-image-file-max-5mb-and-clicking-add-product-to-save",
-      "featureTitle": "Add an informational section to the admin products page explaining how to upload products, including: clicking the 'Add Product' button, filling in the product form with name/description/price, selecting an image file (max 5MB), and clicking 'Add Product' to save",
+      "featureId": "feature-design-and-implement-a-new-visual-theme-for-the-website-with-a-distinct-aesthetic-that-differs-from-the-current-warm-earth-tones-including-updated-color-palette-typography-spacing-and-component-styling",
+      "featureTitle": "Design and implement a new visual theme for the website with a distinct aesthetic that differs from the current warm earth tones, including updated color palette, typography, spacing, and component styling",
       "files": [
+        "frontend/src/components/Layout.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-product-catalog-page-layout-and-structure-to-improve-visual-appeal-and-user-experience-while-maintaining-all-existing-functionality-viewing-products-adding-to-cart",
+      "featureTitle": "Update the product catalog page layout and structure to improve visual appeal and user experience while maintaining all existing functionality (viewing products, adding to cart)",
+      "files": [
+        "frontend/src/pages/ProductCatalog.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-redesign-the-admin-dashboard-interface-including-the-products-management-page-and-orders-page-to-improve-usability-and-visual-consistency-with-the-new-theme",
+      "featureTitle": "Redesign the admin dashboard interface including the products management page and orders page to improve usability and visual consistency with the new theme",
+      "files": [
+        "frontend/src/pages/AdminOrders.tsx",
         "frontend/src/pages/AdminProducts.tsx"
       ],
       "components": [
@@ -17,7 +60,30 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-7"
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-checkout-and-order-confirmation-pages-to-match-the-new-interface-design-while-preserving-all-existing-functionality",
+      "featureTitle": "Update the checkout and order confirmation pages to match the new interface design while preserving all existing functionality",
+      "files": [
+        "frontend/src/components/Cart.tsx",
+        "frontend/src/components/CartButton.tsx",
+        "frontend/src/pages/Checkout.tsx",
+        "frontend/src/pages/OrderConfirmation.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
       ],
       "confidence": "high"
     }

@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { Loader2, ShoppingCart } from 'lucide-react';
+import { Loader2, ShoppingCart, CreditCard } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function Checkout() {
@@ -68,7 +68,7 @@ export default function Checkout() {
     return (
       <div className="container max-w-6xl mx-auto py-12 px-4">
         <div className="flex items-center justify-center h-64">
-          <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+          <Loader2 className="h-10 w-10 animate-spin text-primary" />
         </div>
       </div>
     );
@@ -78,14 +78,16 @@ export default function Checkout() {
     return (
       <div className="container max-w-2xl mx-auto py-16 px-4">
         <div className="text-center space-y-6">
-          <ShoppingCart className="h-16 w-16 text-muted-foreground mx-auto" />
+          <div className="inline-flex p-6 rounded-2xl bg-muted/50">
+            <ShoppingCart className="h-20 w-20 text-muted-foreground" />
+          </div>
           <div>
-            <h2 className="text-2xl font-semibold mb-2">Your cart is empty</h2>
-            <p className="text-muted-foreground">
+            <h2 className="text-3xl font-bold mb-3">Your cart is empty</h2>
+            <p className="text-muted-foreground text-lg">
               Add some products before checking out.
             </p>
           </div>
-          <Button onClick={() => navigate({ to: '/' })}>
+          <Button onClick={() => navigate({ to: '/' })} size="lg" className="gap-2">
             Continue Shopping
           </Button>
         </div>
@@ -95,20 +97,30 @@ export default function Checkout() {
 
   return (
     <div className="container max-w-6xl mx-auto py-12 px-4">
-      <h1 className="text-3xl font-bold mb-8">Checkout</h1>
+      <div className="mb-10">
+        <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          Checkout
+        </h1>
+        <p className="text-lg text-muted-foreground">Complete your purchase</p>
+      </div>
 
-      <div className="grid lg:grid-cols-2 gap-8">
+      <div className="grid lg:grid-cols-2 gap-10">
         {/* Checkout Form */}
         <div>
-          <Card>
-            <CardHeader>
-              <CardTitle>Shipping Information</CardTitle>
-              <CardDescription>Enter your delivery details</CardDescription>
+          <Card className="border-2">
+            <CardHeader className="pb-6">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="p-2 rounded-lg bg-primary/10">
+                  <CreditCard className="h-5 w-5 text-primary" />
+                </div>
+                <CardTitle className="text-2xl">Shipping Information</CardTitle>
+              </div>
+              <CardDescription className="text-base">Enter your delivery details</CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Full Name</Label>
+                  <Label htmlFor="name" className="text-base font-semibold">Full Name</Label>
                   <Input
                     id="name"
                     name="name"
@@ -116,11 +128,12 @@ export default function Checkout() {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
+                    className="h-12"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email" className="text-base font-semibold">Email</Label>
                   <Input
                     id="email"
                     name="email"
@@ -129,11 +142,12 @@ export default function Checkout() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
+                    className="h-12"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="address">Street Address</Label>
+                  <Label htmlFor="address" className="text-base font-semibold">Street Address</Label>
                   <Input
                     id="address"
                     name="address"
@@ -141,12 +155,13 @@ export default function Checkout() {
                     value={formData.address}
                     onChange={handleInputChange}
                     required
+                    className="h-12"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="city">City</Label>
+                    <Label htmlFor="city" className="text-base font-semibold">City</Label>
                     <Input
                       id="city"
                       name="city"
@@ -154,11 +169,12 @@ export default function Checkout() {
                       value={formData.city}
                       onChange={handleInputChange}
                       required
+                      className="h-12"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="postalCode">Postal Code</Label>
+                    <Label htmlFor="postalCode" className="text-base font-semibold">Postal Code</Label>
                     <Input
                       id="postalCode"
                       name="postalCode"
@@ -166,19 +182,20 @@ export default function Checkout() {
                       value={formData.postalCode}
                       onChange={handleInputChange}
                       required
+                      className="h-12"
                     />
                   </div>
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full mt-6"
+                  className="w-full mt-8 h-14 text-lg font-bold shadow-soft hover:shadow-medium transition-all"
                   size="lg"
                   disabled={checkout.isPending}
                 >
                   {checkout.isPending ? (
                     <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                       Processing...
                     </>
                   ) : (
@@ -192,28 +209,28 @@ export default function Checkout() {
 
         {/* Order Summary */}
         <div>
-          <Card>
-            <CardHeader>
-              <CardTitle>Order Summary</CardTitle>
-              <CardDescription>
+          <Card className="border-2 sticky top-24">
+            <CardHeader className="pb-6">
+              <CardTitle className="text-2xl">Order Summary</CardTitle>
+              <CardDescription className="text-base">
                 {cartItems.length} {cartItems.length === 1 ? 'item' : 'items'}
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-3 max-h-96 overflow-y-auto">
+            <CardContent className="space-y-6">
+              <div className="space-y-4 max-h-96 overflow-y-auto pr-2">
                 {cartItems.map((item, index) => {
                   const imageUrl = imageBytesToUrl(item.image);
                   return (
-                    <div key={`${item.id}-${index}`} className="flex gap-3">
+                    <div key={`${item.id}-${index}`} className="flex gap-4 p-3 rounded-xl border-2 bg-card">
                       <img
                         src={imageUrl}
                         alt={item.name}
-                        className="w-16 h-16 object-cover rounded-md"
+                        className="w-20 h-20 object-cover rounded-lg"
                         onLoad={() => URL.revokeObjectURL(imageUrl)}
                       />
                       <div className="flex-1 min-w-0">
-                        <p className="font-medium truncate">{item.name}</p>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="font-semibold text-base truncate">{item.name}</p>
+                        <p className="text-lg font-bold text-primary mt-1">
                           ${(Number(item.price) / 100).toFixed(2)}
                         </p>
                       </div>
@@ -224,19 +241,21 @@ export default function Checkout() {
 
               <Separator />
 
-              <div className="space-y-2">
-                <div className="flex justify-between text-sm">
+              <div className="space-y-3 bg-muted/30 rounded-xl p-5">
+                <div className="flex justify-between text-base">
                   <span className="text-muted-foreground">Subtotal</span>
-                  <span>${(total / 100).toFixed(2)}</span>
+                  <span className="font-semibold">${(total / 100).toFixed(2)}</span>
                 </div>
-                <div className="flex justify-between text-sm">
+                <div className="flex justify-between text-base">
                   <span className="text-muted-foreground">Shipping</span>
-                  <span>Free</span>
+                  <span className="font-semibold">Free</span>
                 </div>
                 <Separator />
-                <div className="flex justify-between text-lg font-semibold">
+                <div className="flex justify-between text-2xl font-bold">
                   <span>Total</span>
-                  <span className="text-primary">${(total / 100).toFixed(2)}</span>
+                  <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                    ${(total / 100).toFixed(2)}
+                  </span>
                 </div>
               </div>
             </CardContent>
@@ -246,4 +265,3 @@ export default function Checkout() {
     </div>
   );
 }
-
