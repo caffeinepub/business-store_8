@@ -1,105 +1,35 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Redesign Business Store Website Interface",
+  "title": "Update application name from Business Store to OM FANCY",
   "requirements": [
     {
-      "id": "REQ-8",
-      "summary": "Design and implement a new visual theme with distinct aesthetic including updated color palette, typography, spacing, and component styling",
+      "id": "REQ-1",
+      "summary": "Update the HTML page title from 'Business Store' to 'OM FANCY' in frontend/index.html",
       "acceptanceCriteria": [
-        "New color scheme is applied consistently across all pages",
-        "Typography is updated with new font choices and sizing",
-        "Component styling (buttons, cards, forms) follows the new design language",
-        "Theme works in both light and dark modes",
-        "Navigation header reflects the new design",
-        "Product cards and catalog layout use the new styling"
+        "Browser tab displays 'OM FANCY' as the page title",
+        "The title tag in index.html contains 'OM FANCY'"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/index.css",
+          "path": "frontend/index.html",
           "operation": "modify",
-          "description": "Replace the current warm earth tone color palette (clay, terracotta, sand) with a new distinct color scheme using OKLCH color system. Update CSS variables for primary, secondary, accent, muted, and destructive colors for both light and dark modes. Ensure the new palette provides sufficient contrast and visual distinction from the current theme."
-        },
-        {
-          "path": "frontend/tailwind.config.js",
-          "operation": "modify",
-          "description": "Update the Tailwind theme configuration to reference the new CSS color variables. Adjust font family declarations if introducing new typography choices. Update any custom spacing, border radius, or animation values to align with the new design language."
-        },
+          "description": "Change the <title> tag content from 'Business Store' to 'OM FANCY'"
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Update all visible branding text in the Layout component header from 'Business Store' to 'OM FANCY'",
+      "acceptanceCriteria": [
+        "Header navigation displays 'OM FANCY' as the main branding",
+        "Any footer or branding elements consistently show 'OM FANCY'"
+      ],
+      "file_operations": [
         {
           "path": "frontend/src/components/Layout.tsx",
           "operation": "modify",
-          "description": "Update the navigation header styling to reflect the new visual theme. Modify background colors, text colors, border styles, and spacing to match the new design language. Update the footer styling for consistency. Ensure the layout container and max-width settings align with the new design requirements."
-        }
-      ]
-    },
-    {
-      "id": "REQ-9",
-      "summary": "Update product catalog page layout and structure to improve visual appeal while maintaining existing functionality",
-      "acceptanceCriteria": [
-        "Product grid layout is refreshed with new spacing and arrangement",
-        "Product cards have updated visual design",
-        "Hero banner section is redesigned or replaced",
-        "All existing product catalog functionality continues to work"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/ProductCatalog.tsx",
-          "operation": "modify",
-          "description": "Redesign the hero banner section with updated styling, imagery reference to frontend/public/assets/generated/hero-banner.dim_1200x400.png, and layout. Refresh the product grid layout with new spacing using updated gap, padding, and grid column configurations. Update product card styling including borders, shadows, hover effects, background colors, and image presentation while preserving the add-to-cart functionality for authenticated users. Ensure the empty state message matches the new design."
-        }
-      ]
-    },
-    {
-      "id": "REQ-10",
-      "summary": "Redesign admin dashboard interface including products management and orders pages for improved usability and visual consistency",
-      "acceptanceCriteria": [
-        "Admin products page has updated layout and styling",
-        "Admin orders page reflects the new design language",
-        "Product management forms and controls are visually updated",
-        "All admin functionality (add, edit, delete products, view orders) remains functional"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/AdminProducts.tsx",
-          "operation": "modify",
-          "description": "Update the admin products page layout and styling to match the new design theme. Refresh the product management form styling including input fields, labels, buttons (Add Product, Edit, Delete), and validation messages. Update the product list/grid display with new card styling, spacing, and visual hierarchy. Ensure all CRUD operations and image upload functionality remain intact. Update the empty state message styling."
-        },
-        {
-          "path": "frontend/src/pages/AdminOrders.tsx",
-          "operation": "modify",
-          "description": "Redesign the admin orders page to align with the new visual theme. Update the order card styling including headers, expandable sections, product item display, and total price presentation. Refresh spacing, borders, colors, and typography. Update the empty state message styling. Ensure all order viewing functionality continues to work."
-        }
-      ]
-    },
-    {
-      "id": "REQ-11",
-      "summary": "Update checkout and order confirmation pages to match the new interface design while preserving existing functionality",
-      "acceptanceCriteria": [
-        "Checkout form has updated styling",
-        "Order confirmation page reflects new design",
-        "Cart display and cart button match new theme",
-        "All checkout workflow functionality continues to work"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/Checkout.tsx",
-          "operation": "modify",
-          "description": "Update the checkout page layout and form styling to match the new design language. Refresh input field styling, labels, validation messages, and the checkout button appearance. Update the cart items display section with new card styling, spacing, and visual presentation. Update the total price display styling. Ensure all form validation and order processing functionality remains intact."
-        },
-        {
-          "path": "frontend/src/pages/OrderConfirmation.tsx",
-          "operation": "modify",
-          "description": "Redesign the order confirmation page to align with the new visual theme. Update the success message styling, order details presentation, product items display with images, and total price formatting. Refresh spacing, colors, typography, and card styling while maintaining all order information display functionality."
-        },
-        {
-          "path": "frontend/src/components/Cart.tsx",
-          "operation": "modify",
-          "description": "Update the cart component styling to match the new design language. Refresh cart item card styling including product images, names, prices, and the remove button appearance. Update the total price display and action buttons (Clear Cart, Checkout) styling. Update empty cart message styling. Ensure all cart operations continue to function correctly."
-        },
-        {
-          "path": "frontend/src/components/CartButton.tsx",
-          "operation": "modify",
-          "description": "Update the cart button styling to match the new theme including the button appearance, item count badge styling, and cart icon reference to frontend/public/assets/generated/cart-icon.dim_64x64.png. Update the sheet panel styling that contains the cart component. Ensure the button continues to display the correct cart item count and opens the cart panel."
+          "description": "Update the branding text in the header navigation and any footer elements from 'Business Store' to 'OM FANCY'"
         }
       ]
     }

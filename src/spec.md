@@ -1,13 +1,10 @@
 # Specification
 
 ## Summary
-**Goal:** Redesign the website interface with a new visual theme and updated layouts across all pages.
+**Goal:** Update the application name from "Business Store" to "OM FANCY" throughout the application.
 
 **Planned changes:**
-- Apply new color palette, typography, and component styling throughout the application
-- Update product catalog page layout with refreshed grid and product card designs
-- Redesign admin dashboard interface including products management and orders pages
-- Update checkout and order confirmation pages to match new design language
-- Ensure new theme works in both light and dark modes
+- Update the HTML page title in frontend/index.html to "OM FANCY"
+- Update all visible branding text in the Layout component header to "OM FANCY"
 
-**User-visible outcome:** Users will experience a completely refreshed interface with a distinct new aesthetic, improved visual appeal, and enhanced usability while all existing functionality remains intact.
+**User-visible outcome:** The browser tab and all visible branding elements will display "OM FANCY" instead of "Business Store".

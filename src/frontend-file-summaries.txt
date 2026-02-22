@@ -3,7 +3,7 @@
   "frontend/tailwind.config.js": "Tailwind configuration with vibrant blue-cyan color palette, Space Grotesk font family, enhanced shadows including glow effect, and fade-in animation.",
   "frontend/src/App.tsx": "Main application component with TanStack Router setup, theme provider, and routes for product catalog, checkout, order confirmation, and admin pages with guards.",
   "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations including products, cart, orders, checkout, admin mutations, user profiles, and helper function to convert image bytes to blob URLs.",
-  "frontend/src/components/Layout.tsx": "Main layout wrapper with gradient-enhanced sticky header navigation featuring logo with glow effect, active route indicators, cart button, login button, conditional admin links, and footer with attribution.",
+  "frontend/src/components/Layout.tsx": "Main layout wrapper with gradient-enhanced sticky header navigation featuring \"OM FANCY\" branding with glow effect, active route indicators, cart button, login button, conditional admin links, and footer with attribution",
   "frontend/src/components/LoginButton.tsx": "Internet Identity login/logout button component with loading states and query cache clearing on logout.",
   "frontend/src/components/UserProfileSetup.tsx": "Modal dialog for first-time user profile setup that prompts authenticated users without profiles to enter their name.",
   "frontend/src/components/CartButton.tsx": "Shopping cart button with gradient badge for item count, enhanced border styling with hover effects, and improved visual prominence in the navigation bar.",
@@ -13,5 +13,6 @@
   "frontend/src/pages/Checkout.tsx": "Checkout page with gradient heading, two-column layout featuring enhanced form styling with larger inputs, sticky order summary card, gradient total price display, and improved visual hierarchy throughout.",
   "frontend/src/pages/OrderConfirmation.tsx": "Order confirmation page with animated success icon, gradient heading, enhanced order details cards with improved spacing, gradient total price display, and modernized visual presentation.",
   "frontend/src/pages/AdminProducts.tsx": "Admin product management page with gradient headings, enhanced card styling with hover effects, improved form layouts with larger inputs, informational alert section, and modernized dialog interfaces for add/edit operations using correct imageBytes parameter name for mutations.",
-  "frontend/src/pages/AdminOrders.tsx": "Admin orders page with gradient heading, accordion-based order display with enhanced card styling, icon badges, improved spacing, and detailed order information presentation with modern visual treatment."
+  "frontend/src/pages/AdminOrders.tsx": "Admin orders page with gradient heading, accordion-based order display with enhanced card styling, icon badges, improved spacing, and detailed order information presentation with modern visual treatment.",
+  "frontend/index.html": "HTML entry point with page title updated to \"OM FANCY\""
 }

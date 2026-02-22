@@ -1,57 +1,30 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "E-commerce website with admin dashboard for product management",
-  "architectural_notes": [
-    "E-commerce site with admin dashboard",
-    "Product management system (add, edit, delete products)",
-    "Products stored in backend canister"
-  ],
+  "summary": "New project",
+  "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-design-and-implement-a-new-visual-theme-for-the-website-with-a-distinct-aesthetic-that-differs-from-the-current-warm-earth-tones-including-updated-color-palette-typography-spacing-and-component-styling",
-      "title": "Design and implement a new visual theme for the website with a distinct aesthetic that differs from the current warm earth tones, including updated color palette, typography, spacing, and component styling",
+      "id": "feature-update-the-html-page-title-from-business-store-to-om-fancy-in-frontend-index-html",
+      "title": "Update the HTML page title from 'Business Store' to 'OM FANCY' in frontend/index.html",
       "reqIds": [
-        "REQ-8"
+        "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-update-the-product-catalog-page-layout-and-structure-to-improve-visual-appeal-and-user-experience-while-maintaining-all-existing-functionality-viewing-products-adding-to-cart",
-      "title": "Update the product catalog page layout and structure to improve visual appeal and user experience while maintaining all existing functionality (viewing products, adding to cart)",
+      "id": "feature-update-all-visible-branding-text-in-the-layout-component-header-from-business-store-to-om-fancy",
+      "title": "Update all visible branding text in the Layout component header from 'Business Store' to 'OM FANCY'",
       "reqIds": [
-        "REQ-9"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-redesign-the-admin-dashboard-interface-including-the-products-management-page-and-orders-page-to-improve-usability-and-visual-consistency-with-the-new-theme",
-      "title": "Redesign the admin dashboard interface including the products management page and orders page to improve usability and visual consistency with the new theme",
-      "reqIds": [
-        "REQ-10"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-the-checkout-and-order-confirmation-pages-to-match-the-new-interface-design-while-preserving-all-existing-functionality",
-      "title": "Update the checkout and order confirmation pages to match the new interface design while preserving all existing functionality",
-      "reqIds": [
-        "REQ-11"
+        "REQ-2"
       ],
       "version": 1
     }
   ],
-  "new_feature_requests": [
-    {
-      "id": "AR-1",
-      "summary": "Change/redesign website interface",
-      "reqIds": [],
-      "status": "pending"
-    }
-  ],
-  "projectName": "Business Store",
+  "new_feature_requests": [],
+  "projectName": "OM FANCY",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

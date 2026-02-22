@@ -23,7 +23,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <Store className="h-6 w-6 text-primary-foreground" />
             </div>
             <span className="text-2xl font-bold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Business Store
+              OM FANCY
             </span>
           </Link>
 
@@ -81,13 +81,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="container">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Business Store. All rights reserved.
+              © {new Date().getFullYear()} OM FANCY. All rights reserved.
             </p>
             <p className="text-sm text-muted-foreground">
               Built with ❤️ using{' '}
               <a
                 href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(
-                  typeof window !== 'undefined' ? window.location.hostname : 'business-store'
+                  typeof window !== 'undefined' ? window.location.hostname : 'om-fancy'
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
