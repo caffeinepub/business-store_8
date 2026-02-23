@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useActor } from './useActor';
-import type { Product, CartItem, Order, UserProfile } from '../backend';
+import type { Product, CartItem, Order, UserProfile, CombinedOrder } from '../backend';
 import { PaymentMethod } from '../backend';
 import { Principal } from '@dfinity/principal';
 
@@ -265,6 +265,20 @@ export function useIsAdmin() {
     queryFn: async () => {
       if (!actor) return false;
       return actor.isAdmin();
+    },
+    enabled: !!actor && !isFetching,
+  });
+}
+
+// Admin Customer Orders Query
+export function useGetAllCustomerOrdersAdmin() {
+  const { actor, isFetching } = useActor();
+
+  return useQuery<CombinedOrder[]>({
+    queryKey: ['allCustomerOrders'],
+    queryFn: async () => {
+      if (!actor) return [];
+      return actor.getAllCustomerOrdersAdmin();
     },
     enabled: !!actor && !isFetching,
   });

@@ -38,12 +38,12 @@ export default function ProductCatalog() {
   return (
     <div className="min-h-screen">
       {/* Hero Banner */}
-      <div className="relative w-full h-[500px] bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 overflow-hidden">
+      <div className="relative w-full h-[500px] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/assets/generated/hero-banner.dim_1200x400.png"
+            src="/assets/generated/signage-hero.dim_1920x600.png"
             alt="OM FANCY & GIFT COLLECTION"
-            className="w-full h-full object-cover opacity-40"
+            className="w-full h-full object-cover"
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
@@ -53,14 +53,14 @@ export default function ProductCatalog() {
               <Sparkles className="h-4 w-4 text-primary" />
               <span className="text-sm font-semibold text-primary">New Collection Available</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight drop-shadow-lg">
               Welcome to
               <br />
-              <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent drop-shadow-lg">
                 OM FANCY & GIFT COLLECTION
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl">
+            <p className="text-xl text-muted-foreground max-w-2xl drop-shadow-md">
               Make your own choice with premium outfit
             </p>
           </div>

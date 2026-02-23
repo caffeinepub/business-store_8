@@ -17,6 +17,20 @@ export interface CartItem {
   'image' : Image,
   'price' : bigint,
 }
+export interface CombinedOrder {
+  'id' : bigint,
+  'paymentMethod' : PaymentMethod,
+  'orderDate' : bigint,
+  'totalAmount' : bigint,
+  'customerDetails' : CustomerDetails,
+  'items' : Array<OrderItem>,
+}
+export interface CustomerDetails {
+  'name' : string,
+  'email' : string,
+  'shippingAddress' : string,
+  'contactNumber' : string,
+}
 export type Id = bigint;
 export type Image = Uint8Array;
 export interface Order {
@@ -25,6 +39,11 @@ export interface Order {
   'paymentMethod' : PaymentMethod,
   'customer' : Principal,
   'products' : Array<Product>,
+}
+export interface OrderItem {
+  'productId' : bigint,
+  'quantity' : bigint,
+  'price' : bigint,
 }
 export type PaymentMethod = { 'upi' : null } |
   { 'cashOnDelivery' : null };
@@ -73,9 +92,11 @@ export interface _SERVICE {
   'checkout' : ActorMethod<[PaymentMethod], bigint>,
   'clearCart' : ActorMethod<[], undefined>,
   'deleteProduct' : ActorMethod<[Id], undefined>,
+  'getAllCustomerOrdersAdmin' : ActorMethod<[], Array<CombinedOrder>>,
   'getCallerUserProfile' : ActorMethod<[], [] | [UserProfile]>,
   'getCallerUserRole' : ActorMethod<[], UserRole>,
   'getCart' : ActorMethod<[], Array<CartItem>>,
+  'getCustomerDetails' : ActorMethod<[], [] | [CustomerDetails]>,
   'getMyOrders' : ActorMethod<[], Array<Order>>,
   'getOrder' : ActorMethod<[Id], [] | [Order]>,
   'getOrders' : ActorMethod<[], Array<Order>>,
@@ -85,6 +106,7 @@ export interface _SERVICE {
   'isAdmin' : ActorMethod<[], boolean>,
   'isCallerAdmin' : ActorMethod<[], boolean>,
   'saveCallerUserProfile' : ActorMethod<[UserProfile], undefined>,
+  'saveCustomerDetails' : ActorMethod<[CustomerDetails], undefined>,
   'updateProduct' : ActorMethod<
     [Id, [] | [string], [] | [string], [] | [bigint], [] | [Image]],
     undefined

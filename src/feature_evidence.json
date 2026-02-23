@@ -2,10 +2,12 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-in-the-productcatalog-page-hero-section-change-the-tagline-text-from-discover-premium-technology-to-make-your-own-choice-with-premium-outfit",
-      "featureTitle": "In the ProductCatalog page hero section, change the tagline text from 'DISCOVER PREMIUM TECHNOLOGY' to 'MAKE YOUR OWN CHOICE WITH PREMIUM OUTFIT'",
+      "featureId": "feature-create-an-admin-page-with-a-button-to-export-all-customer-order-data-as-a-csv-file-download",
+      "featureTitle": "Create an admin page with a button to export all customer order data as a CSV file download",
       "files": [
-        "frontend/src/pages/ProductCatalog.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/pages/AdminExportData.tsx",
+        "frontend/src/utils/csvExport.ts"
       ],
       "components": [
         "authorization@4.0.0",
@@ -17,7 +19,27 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-1"
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-navigation-link-to-the-new-customer-data-export-page-in-the-admin-section-of-the-header",
+      "featureTitle": "Add navigation link to the new customer data export page in the admin section of the header",
+      "files": [
+        "frontend/src/components/Layout.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
       ],
       "confidence": "high"
     }

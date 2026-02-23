@@ -1,16 +1,24 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "E-commerce store for OM FANCY & GIFT COLLECTION with premium outfit branding",
+  "summary": "Fashion store application requiring customer data management and export functionality",
   "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-in-the-productcatalog-page-hero-section-change-the-tagline-text-from-discover-premium-technology-to-make-your-own-choice-with-premium-outfit",
-      "title": "In the ProductCatalog page hero section, change the tagline text from 'DISCOVER PREMIUM TECHNOLOGY' to 'MAKE YOUR OWN CHOICE WITH PREMIUM OUTFIT'",
+      "id": "feature-create-an-admin-page-with-a-button-to-export-all-customer-order-data-as-a-csv-file-download",
+      "title": "Create an admin page with a button to export all customer order data as a CSV file download",
       "reqIds": [
-        "REQ-1"
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-navigation-link-to-the-new-customer-data-export-page-in-the-admin-section-of-the-header",
+      "title": "Add navigation link to the new customer data export page in the admin section of the header",
+      "reqIds": [
+        "REQ-3"
       ],
       "version": 1
     }
@@ -18,12 +26,20 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Update hero section text from 'DISCOVER PREMIUM TECHNOLOGY' to 'MAKE YOUR OWN CHOICE WITH PREMIUM OUTFIT'",
+      "summary": "Add customer data export functionality",
       "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Add a backend query method to retrieve all customer order data including customer name, email, phone, address, order date, products purchased, quantities, prices, payment method, and order totals",
+      "reqIds": [
+        "REQ-1"
+      ],
       "status": "pending"
     }
   ],
-  "projectName": "WELCOME OM FANCY & GIFT COLLECTION",
+  "projectName": "OM FANCY",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

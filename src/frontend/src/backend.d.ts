@@ -7,22 +7,6 @@ export interface None {
     __kind__: "None";
 }
 export type Option<T> = Some<T> | None;
-export type Image = Uint8Array;
-export type Id = bigint;
-export interface CartItem {
-    id: Id;
-    name: string;
-    description: string;
-    image: Image;
-    price: bigint;
-}
-export interface Order {
-    id: Id;
-    total: bigint;
-    paymentMethod: PaymentMethod;
-    customer: Principal;
-    products: Array<Product>;
-}
 export interface UserProfile {
     name: string;
 }
@@ -32,6 +16,41 @@ export interface Product {
     description: string;
     image: Image;
     price: bigint;
+}
+export interface OrderItem {
+    productId: bigint;
+    quantity: bigint;
+    price: bigint;
+}
+export interface Order {
+    id: Id;
+    total: bigint;
+    paymentMethod: PaymentMethod;
+    customer: Principal;
+    products: Array<Product>;
+}
+export interface CombinedOrder {
+    id: bigint;
+    paymentMethod: PaymentMethod;
+    orderDate: bigint;
+    totalAmount: bigint;
+    customerDetails: CustomerDetails;
+    items: Array<OrderItem>;
+}
+export type Image = Uint8Array;
+export type Id = bigint;
+export interface CartItem {
+    id: Id;
+    name: string;
+    description: string;
+    image: Image;
+    price: bigint;
+}
+export interface CustomerDetails {
+    name: string;
+    email: string;
+    shippingAddress: string;
+    contactNumber: string;
 }
 export enum PaymentMethod {
     upi = "upi",
@@ -49,9 +68,11 @@ export interface backendInterface {
     checkout(paymentMethod: PaymentMethod): Promise<bigint>;
     clearCart(): Promise<void>;
     deleteProduct(id: Id): Promise<void>;
+    getAllCustomerOrdersAdmin(): Promise<Array<CombinedOrder>>;
     getCallerUserProfile(): Promise<UserProfile | null>;
     getCallerUserRole(): Promise<UserRole>;
     getCart(): Promise<Array<CartItem>>;
+    getCustomerDetails(): Promise<CustomerDetails | null>;
     getMyOrders(): Promise<Array<Order>>;
     getOrder(id: Id): Promise<Order | null>;
     getOrders(): Promise<Array<Order>>;
@@ -61,5 +82,6 @@ export interface backendInterface {
     isAdmin(): Promise<boolean>;
     isCallerAdmin(): Promise<boolean>;
     saveCallerUserProfile(profile: UserProfile): Promise<void>;
+    saveCustomerDetails(details: CustomerDetails): Promise<void>;
     updateProduct(id: Id, name: string | null, description: string | null, price: bigint | null, image: Image | null): Promise<void>;
 }

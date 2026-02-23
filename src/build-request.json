@@ -1,34 +1,67 @@
 {
   "kind": "build_request",
-  "title": "Update hero section tagline to premium outfit messaging",
-  "projectName": "OM FANCY Collection",
+  "title": "Add customer data export functionality",
+  "projectName": "OM FANCY",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "In the ProductCatalog page hero section, change the tagline text from 'DISCOVER PREMIUM TECHNOLOGY' to 'MAKE YOUR OWN CHOICE WITH PREMIUM OUTFIT'",
-      "target": "frontend",
+      "text": "Add a backend query method to retrieve all customer order data including customer name, email, phone, address, order date, products purchased, quantities, prices, payment method, and order totals",
+      "target": "backend",
       "source": {
         "messageIds": [
-          "msg-6",
-          "msg-7"
-        ],
-        "quotes": [
-          "CHANGE FROM \"DISCOVER PREMIUM TECHNOLOGY \" TO \"MAKE YOUR OWN CHOICE WITH PREMIUM OUTFIT\"."
+          "msg-last"
         ]
       },
       "acceptanceCriteria": [
-        "The hero section displays 'MAKE YOUR OWN CHOICE WITH PREMIUM OUTFIT' as the tagline",
-        "The text 'DISCOVER PREMIUM TECHNOLOGY' is completely removed from the page",
-        "The visual styling and layout of the hero section remain unchanged"
+        "Backend exposes a query method that returns comprehensive customer order data",
+        "Method is restricted to admin users only",
+        "Data includes all order fields and associated customer profile information"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Create an admin page with a button to export all customer order data as a CSV file download",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Admin page includes an 'Export Customer Data' button",
+        "Clicking the button downloads a CSV file containing all customer orders",
+        "CSV includes headers: Order ID, Customer Name, Email, Phone, Address, Order Date, Products, Quantities, Prices, Payment Method, Total",
+        "File is named with timestamp (e.g., 'customer-data-2024-01-15.csv')"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add navigation link to the new customer data export page in the admin section of the header",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Link appears in Layout.tsx navigation alongside existing 'Admin Orders' and 'Admin Products' links",
+        "Link is only visible to authenticated admin users",
+        "Link text is 'Export Data' or similar clear label"
       ]
     }
   ],
-  "constraints": [],
+  "constraints": [
+    "Customer data export must be restricted to admin users only",
+    "Use existing authorization system and AdminGuard component",
+    "CSV export must be client-side (no external services)"
+  ],
   "nonGoals": [
-    "Changing any other text on the page",
-    "Modifying the hero section layout or styling",
-    "Updating backend functionality"
+    "Real-time data streaming or incremental exports",
+    "Advanced filtering or date range selection for exports",
+    "Multiple export format options (PDF, JSON, Excel)",
+    "Scheduled or automated exports",
+    "Email delivery of exported data"
   ],
   "imageRequirements": {
     "required": [],

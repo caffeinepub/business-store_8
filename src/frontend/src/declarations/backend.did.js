@@ -30,6 +30,25 @@ export const PaymentMethod = IDL.Variant({
   'upi' : IDL.Null,
   'cashOnDelivery' : IDL.Null,
 });
+export const CustomerDetails = IDL.Record({
+  'name' : IDL.Text,
+  'email' : IDL.Text,
+  'shippingAddress' : IDL.Text,
+  'contactNumber' : IDL.Text,
+});
+export const OrderItem = IDL.Record({
+  'productId' : IDL.Nat,
+  'quantity' : IDL.Nat,
+  'price' : IDL.Nat,
+});
+export const CombinedOrder = IDL.Record({
+  'id' : IDL.Nat,
+  'paymentMethod' : PaymentMethod,
+  'orderDate' : IDL.Nat,
+  'totalAmount' : IDL.Nat,
+  'customerDetails' : CustomerDetails,
+  'items' : IDL.Vec(OrderItem),
+});
 export const UserProfile = IDL.Record({ 'name' : IDL.Text });
 export const CartItem = IDL.Record({
   'id' : Id,
@@ -87,9 +106,15 @@ export const idlService = IDL.Service({
   'checkout' : IDL.Func([PaymentMethod], [IDL.Nat], []),
   'clearCart' : IDL.Func([], [], []),
   'deleteProduct' : IDL.Func([Id], [], []),
+  'getAllCustomerOrdersAdmin' : IDL.Func(
+      [],
+      [IDL.Vec(CombinedOrder)],
+      ['query'],
+    ),
   'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
   'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
   'getCart' : IDL.Func([], [IDL.Vec(CartItem)], ['query']),
+  'getCustomerDetails' : IDL.Func([], [IDL.Opt(CustomerDetails)], ['query']),
   'getMyOrders' : IDL.Func([], [IDL.Vec(Order)], ['query']),
   'getOrder' : IDL.Func([Id], [IDL.Opt(Order)], ['query']),
   'getOrders' : IDL.Func([], [IDL.Vec(Order)], ['query']),
@@ -103,6 +128,7 @@ export const idlService = IDL.Service({
   'isAdmin' : IDL.Func([], [IDL.Bool], ['query']),
   'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
   'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
+  'saveCustomerDetails' : IDL.Func([CustomerDetails], [], []),
   'updateProduct' : IDL.Func(
       [
         Id,
@@ -140,6 +166,25 @@ export const idlFactory = ({ IDL }) => {
   const PaymentMethod = IDL.Variant({
     'upi' : IDL.Null,
     'cashOnDelivery' : IDL.Null,
+  });
+  const CustomerDetails = IDL.Record({
+    'name' : IDL.Text,
+    'email' : IDL.Text,
+    'shippingAddress' : IDL.Text,
+    'contactNumber' : IDL.Text,
+  });
+  const OrderItem = IDL.Record({
+    'productId' : IDL.Nat,
+    'quantity' : IDL.Nat,
+    'price' : IDL.Nat,
+  });
+  const CombinedOrder = IDL.Record({
+    'id' : IDL.Nat,
+    'paymentMethod' : PaymentMethod,
+    'orderDate' : IDL.Nat,
+    'totalAmount' : IDL.Nat,
+    'customerDetails' : CustomerDetails,
+    'items' : IDL.Vec(OrderItem),
   });
   const UserProfile = IDL.Record({ 'name' : IDL.Text });
   const CartItem = IDL.Record({
@@ -198,9 +243,15 @@ export const idlFactory = ({ IDL }) => {
     'checkout' : IDL.Func([PaymentMethod], [IDL.Nat], []),
     'clearCart' : IDL.Func([], [], []),
     'deleteProduct' : IDL.Func([Id], [], []),
+    'getAllCustomerOrdersAdmin' : IDL.Func(
+        [],
+        [IDL.Vec(CombinedOrder)],
+        ['query'],
+      ),
     'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
     'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
     'getCart' : IDL.Func([], [IDL.Vec(CartItem)], ['query']),
+    'getCustomerDetails' : IDL.Func([], [IDL.Opt(CustomerDetails)], ['query']),
     'getMyOrders' : IDL.Func([], [IDL.Vec(Order)], ['query']),
     'getOrder' : IDL.Func([Id], [IDL.Opt(Order)], ['query']),
     'getOrders' : IDL.Func([], [IDL.Vec(Order)], ['query']),
@@ -214,6 +265,7 @@ export const idlFactory = ({ IDL }) => {
     'isAdmin' : IDL.Func([], [IDL.Bool], ['query']),
     'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
     'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
+    'saveCustomerDetails' : IDL.Func([CustomerDetails], [], []),
     'updateProduct' : IDL.Func(
         [
           Id,

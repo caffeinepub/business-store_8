@@ -1,21 +1,48 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Update hero section tagline to premium outfit messaging",
+  "title": "Add customer data export functionality",
   "requirements": [
     {
-      "id": "REQ-1",
-      "summary": "Change the ProductCatalog hero section tagline from 'DISCOVER PREMIUM TECHNOLOGY' to 'MAKE YOUR OWN CHOICE WITH PREMIUM OUTFIT'",
+      "id": "REQ-2",
+      "summary": "Create an admin page with a button to export all customer order data as a CSV file download",
       "acceptanceCriteria": [
-        "The hero section displays 'MAKE YOUR OWN CHOICE WITH PREMIUM OUTFIT' as the tagline",
-        "The text 'DISCOVER PREMIUM TECHNOLOGY' is completely removed from the page",
-        "The visual styling and layout of the hero section remain unchanged"
+        "Admin page includes an 'Export Customer Data' button",
+        "Clicking the button downloads a CSV file containing all customer orders",
+        "CSV includes headers: Order ID, Customer Name, Email, Phone, Address, Order Date, Products, Quantities, Prices, Payment Method, Total",
+        "File is named with timestamp (e.g., 'customer-data-2024-01-15.csv')"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/ProductCatalog.tsx",
+          "path": "frontend/src/pages/AdminExportData.tsx",
+          "operation": "create",
+          "description": "Create admin page that fetches customer order data using the getAllCustomerOrdersAdmin backend method and provides CSV export functionality. The page includes an 'Export Customer Data' button that generates a CSV file with headers (Order ID, Customer Name, Email, Phone, Address, Order Date, Products, Quantities, Prices, Payment Method, Total) and downloads it with a timestamp-based filename (e.g., 'customer-data-2024-01-15.csv'). Use the AdminGuard component to restrict access to admin users only. Format order data from CombinedOrder interface including customerDetails, orderItems, and payment information into CSV rows."
+        },
+        {
+          "path": "frontend/src/utils/csvExport.ts",
+          "operation": "create",
+          "description": "Create utility functions for CSV generation and file download. Include a function to convert array data to CSV format with proper escaping of special characters (quotes, commas, newlines), and a function to trigger browser download of the generated CSV with a specified filename. Handle edge cases like empty data arrays and null values."
+        },
+        {
+          "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Update the hero section tagline text from 'DISCOVER PREMIUM TECHNOLOGY' to 'MAKE YOUR OWN CHOICE WITH PREMIUM OUTFIT'. Locate the hero banner section and replace the existing tagline text while preserving all styling, layout, and other visual elements."
+          "description": "Add route configuration for the new AdminExportData page at path '/admin/export-data'. Wrap the route with AdminGuard component to ensure admin-only access. Import the AdminExportData component and register it in the router alongside existing admin routes (AdminProducts, AdminOrders)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add navigation link to the new customer data export page in the admin section of the header",
+      "acceptanceCriteria": [
+        "Link appears in Layout.tsx navigation alongside existing 'Admin Orders' and 'Admin Products' links",
+        "Link is only visible to authenticated admin users",
+        "Link text is 'Export Data' or similar clear label"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "modify",
+          "description": "Add 'Export Data' navigation link to the admin section of the header navigation. Place the link alongside existing 'Admin Orders' and 'Admin Products' links. Ensure the link is conditionally rendered based on isAdmin state using the same visibility logic as other admin links. The link should navigate to '/admin/export-data' route and use consistent styling with existing navigation items."
         }
       ]
     }

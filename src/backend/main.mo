@@ -7,12 +7,10 @@ import Iter "mo:core/Iter";
 import Array "mo:core/Array";
 import Principal "mo:core/Principal";
 
-
 import MixinAuthorization "authorization/MixinAuthorization";
 import MixinStorage "blob-storage/Mixin";
 import AccessControl "authorization/access-control";
 import Storage "blob-storage/Storage";
-
 
 actor {
   let accessControlState = AccessControl.initState();
@@ -77,6 +75,28 @@ actor {
     name : Text;
   };
 
+  public type CustomerDetails = {
+    name : Text;
+    contactNumber : Text;
+    email : Text;
+    shippingAddress : Text;
+  };
+
+  public type OrderItem = {
+    productId : Nat;
+    quantity : Nat;
+    price : Nat;
+  };
+
+  public type CombinedOrder = {
+    id : Nat;
+    customerDetails : CustomerDetails;
+    items : [OrderItem];
+    totalAmount : Nat;
+    paymentMethod : Order.PaymentMethod;
+    orderDate : Nat;
+  };
+
   var nextProductId = 0;
   var nextOrderId = 0;
 
@@ -84,6 +104,7 @@ actor {
   let ordersMap = Map.empty<Nat, Order.Order>();
   let cartsMap = Map.empty<Principal, Cart.Cart>();
   let userProfiles = Map.empty<Principal, UserProfile>();
+  let customerInfoMap = Map.empty<Principal, CustomerDetails>();
 
   // User profile management
   public query ({ caller }) func getCallerUserProfile() : async ?UserProfile {
@@ -105,6 +126,20 @@ actor {
       Runtime.trap("Unauthorized: Only users can save profiles");
     };
     userProfiles.add(caller, profile);
+  };
+
+  public shared ({ caller }) func saveCustomerDetails(details : CustomerDetails) : async () {
+    if (not (AccessControl.hasPermission(accessControlState, caller, #user))) {
+      Runtime.trap("Unauthorized: Only users can save customer details");
+    };
+    customerInfoMap.add(caller, details);
+  };
+
+  public query ({ caller }) func getCustomerDetails() : async ?CustomerDetails {
+    if (not (AccessControl.hasPermission(accessControlState, caller, #user))) {
+      Runtime.trap("Unauthorized: Only users can view customer details");
+    };
+    customerInfoMap.get(caller);
   };
 
   // Product management (Admin only)
@@ -143,7 +178,7 @@ actor {
     productsMap.remove(id);
   };
 
-  // Product catalog viewing (Public - no auth required)
+  // Product catalog viewing (Public)
   public query func getProducts() : async [Product.Product] {
     productsMap.values().toArray();
   };
@@ -246,8 +281,46 @@ actor {
     };
   };
 
-  // Admin role verification (Patched)
+  // Admin role verification
   public query ({ caller }) func isAdmin() : async Bool {
     AccessControl.isAdmin(accessControlState, caller);
+  };
+
+  public query ({ caller }) func getAllCustomerOrdersAdmin() : async [CombinedOrder] {
+    if (not AccessControl.isAdmin(accessControlState, caller)) {
+      Runtime.trap("Unauthorized: Only admins can access this data");
+    };
+
+    let combinedOrders = List.empty<CombinedOrder>();
+
+    for ((orderId, order) in ordersMap.entries()) {
+      switch (customerInfoMap.get(order.customer)) {
+        case (?customerDetails) {
+          let orderItems = List.empty<OrderItem>();
+          for (product in order.products.values()) {
+            let orderItem = {
+              productId = product.id;
+              quantity = 1; // Adjust this if you support quantity in cart
+              price = product.price;
+            };
+            orderItems.add(orderItem);
+          };
+
+          let combinedOrder = {
+            id = orderId;
+            customerDetails;
+            items = orderItems.toArray();
+            totalAmount = order.total;
+            paymentMethod = order.paymentMethod;
+            orderDate = 0; // Set this if you have an order date property
+          };
+
+          combinedOrders.add(combinedOrder);
+        };
+        case (null) {};
+      };
+    };
+
+    combinedOrders.toArray();
   };
 };

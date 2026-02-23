@@ -9,6 +9,7 @@ import OrderDetails from './pages/OrderDetails';
 import MyAccount from './pages/MyAccount';
 import AdminProducts from './pages/AdminProducts';
 import AdminOrders from './pages/AdminOrders';
+import AdminExportData from './pages/AdminExportData';
 import AdminGuard from './components/AdminGuard';
 
 const rootRoute = createRootRoute({
@@ -69,6 +70,16 @@ const adminOrdersRoute = createRoute({
   ),
 });
 
+const adminExportDataRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/admin/export-data',
+  component: () => (
+    <AdminGuard>
+      <AdminExportData />
+    </AdminGuard>
+  ),
+});
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   checkoutRoute,
@@ -77,6 +88,7 @@ const routeTree = rootRoute.addChildren([
   myAccountRoute,
   adminProductsRoute,
   adminOrdersRoute,
+  adminExportDataRoute,
 ]);
 
 const router = createRouter({ routeTree });

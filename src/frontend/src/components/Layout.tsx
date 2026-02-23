@@ -80,6 +80,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     <span className="absolute -bottom-[21px] left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent" />
                   )}
                 </Link>
+                <Link
+                  to="/admin/export-data"
+                  className={`text-sm font-semibold transition-all hover:text-primary relative ${
+                    currentPath === '/admin/export-data' ? 'text-foreground' : 'text-muted-foreground'
+                  }`}
+                >
+                  Export Data
+                  {currentPath === '/admin/export-data' && (
+                    <span className="absolute -bottom-[21px] left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent" />
+                  )}
+                </Link>
               </>
             )}
 
