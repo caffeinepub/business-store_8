@@ -1,12 +1,12 @@
 {
   "kind": "build_request",
-  "title": "Update welcome message to OM FANCY & GIFT COLLECTION",
-  "projectName": "OM FANCY & GIFT COLLECTION",
+  "title": "Update hero section tagline to premium outfit messaging",
+  "projectName": "OM FANCY Collection",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Change the welcome text from 'WELCOME TO BUSINESS STORE' to 'WELCOME TO OM FANCY & GIFT COLLECTION' in the product catalog hero section",
+      "text": "In the ProductCatalog page hero section, change the tagline text from 'DISCOVER PREMIUM TECHNOLOGY' to 'MAKE YOUR OWN CHOICE WITH PREMIUM OUTFIT'",
       "target": "frontend",
       "source": {
         "messageIds": [
@@ -14,17 +14,22 @@
           "msg-7"
         ],
         "quotes": [
-          "CHANGE FROM \"WELCOME TO BUSINESS STORE \" TO \"WELCOME OM FANCY & GIFT COLLECTION\"."
+          "CHANGE FROM \"DISCOVER PREMIUM TECHNOLOGY \" TO \"MAKE YOUR OWN CHOICE WITH PREMIUM OUTFIT\"."
         ]
       },
       "acceptanceCriteria": [
-        "The hero section displays 'WELCOME TO OM FANCY & GIFT COLLECTION' instead of the old text",
-        "The text maintains the same styling and prominence as before"
+        "The hero section displays 'MAKE YOUR OWN CHOICE WITH PREMIUM OUTFIT' as the tagline",
+        "The text 'DISCOVER PREMIUM TECHNOLOGY' is completely removed from the page",
+        "The visual styling and layout of the hero section remain unchanged"
       ]
     }
   ],
   "constraints": [],
-  "nonGoals": [],
+  "nonGoals": [
+    "Changing any other text on the page",
+    "Modifying the hero section layout or styling",
+    "Updating backend functionality"
+  ],
   "imageRequirements": {
     "required": [],
     "edits": []

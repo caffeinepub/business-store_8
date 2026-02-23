@@ -1,9 +1,9 @@
 # Specification
 
 ## Summary
-**Goal:** Update the welcome message in the hero section to reflect the store name "OM FANCY & GIFT COLLECTION".
+**Goal:** Update the hero section tagline in the ProductCatalog page to reflect premium outfit messaging.
 
 **Planned changes:**
-- Change the hero section welcome text from "WELCOME TO BUSINESS STORE" to "WELCOME TO OM FANCY & GIFT COLLECTION"
+- Change hero section tagline from "DISCOVER PREMIUM TECHNOLOGY" to "MAKE YOUR OWN CHOICE WITH PREMIUM OUTFIT"
 
-**User-visible outcome:** Users visiting the product catalog will see the updated welcome message "WELCOME TO OM FANCY & GIFT COLLECTION" in the hero section.
+**User-visible outcome:** Users will see the updated tagline "MAKE YOUR OWN CHOICE WITH PREMIUM OUTFIT" in the hero section of the product catalog page.

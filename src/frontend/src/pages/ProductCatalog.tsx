@@ -61,7 +61,7 @@ export default function ProductCatalog() {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl">
-              Discover our curated collection of premium products designed for modern living
+              Make your own choice with premium outfit
             </p>
           </div>
         </div>
