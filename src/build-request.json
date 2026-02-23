@@ -1,51 +1,65 @@
 {
   "kind": "build_request",
-  "title": "Update application name from Business Store to OM FANCY",
+  "title": "Display order details view",
   "projectName": "OM FANCY",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Update the HTML page title from 'Business Store' to 'OM FANCY' in frontend/index.html",
+      "text": "Add a user-facing order details page that displays comprehensive information for a single order including order ID, date, status, shipping information (name, email, address, city, postal code, country), and all ordered items with product names, quantities, individual prices, and total order amount",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-latest"
-        ],
-        "quotes": [
-          "CHANGE THE NAME FROM BUSINESS STORE INTO OM FANCY"
+          "msg-user-final"
         ]
       },
       "acceptanceCriteria": [
-        "Browser tab displays 'OM FANCY' as the page title",
-        "The title tag in index.html contains 'OM FANCY'"
+        "Order details page is accessible from the order confirmation page and product catalog",
+        "Page displays all order information including shipping details and itemized products",
+        "Design follows the existing OM FANCY blue-cyan gradient theme with Space Grotesk typography",
+        "Order total is calculated and displayed correctly"
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Update all visible branding text in the Layout component header from 'Business Store' to 'OM FANCY'",
+      "text": "Add navigation from OrderConfirmation page to the new order details view, allowing users to view their completed order",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-latest"
-        ],
-        "quotes": [
-          "CHANGE THE NAME FROM BUSINESS STORE INTO OM FANCY"
+          "msg-user-final"
         ]
       },
       "acceptanceCriteria": [
-        "Header navigation displays 'OM FANCY' as the main branding",
-        "Any footer or branding elements consistently show 'OM FANCY'"
+        "Link or button on order confirmation page navigates to order details",
+        "Navigation preserves order ID context"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Extend the existing admin orders page (AdminOrders.tsx) to allow clicking on individual orders to view full order details in an expanded view or modal",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-final"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Admin can click on any order in the list to view detailed information",
+        "Details view shows the same comprehensive order information as the user-facing page",
+        "UI clearly indicates which orders are clickable"
       ]
     }
   ],
   "constraints": [
-    "Only update the application name; do not modify any other functionality or styling"
+    "Do not modify the backend order schema or API",
+    "Maintain consistency with existing OM FANCY blue-cyan gradient design theme",
+    "Use Space Grotesk typography as established in the current design"
   ],
   "nonGoals": [
-    "Changing the visual design or color scheme",
-    "Modifying backend logic or data structures",
-    "Updating any functionality beyond the name change"
+    "Modifying order status or allowing order updates",
+    "Adding order search or filtering functionality",
+    "Implementing order history pagination",
+    "Adding email notifications for orders"
   ],
   "imageRequirements": {
     "required": [],

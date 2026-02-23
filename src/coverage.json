@@ -1,35 +1,48 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-22T12:34:28.905Z",
+  "generatedAt": "2026-02-23T04:30:51.200Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
-    "implemented": 2,
+    "total": 3,
+    "implemented": 3,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Update the HTML page title from 'Business Store' to 'OM FANCY' in frontend/index.html",
+        "summary": "Add a user-facing order details page that displays comprehensive information for a single order including order ID, date, status, shipping information (name, email, address, city, postal code, country), and all ordered items with product names, quantities, individual prices, and total order amount",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/index.html"
+          "frontend/src/pages/OrderDetails.tsx",
+          "frontend/src/App.tsx"
         ],
         "matchedFiles": [
-          "frontend/index.html"
+          "frontend/src/pages/OrderDetails.tsx",
+          "frontend/src/App.tsx"
         ]
       },
       {
         "id": "REQ-2",
-        "summary": "Update all visible branding text in the Layout component header from 'Business Store' to 'OM FANCY'",
+        "summary": "Add navigation from OrderConfirmation page to the new order details view, allowing users to view their completed order",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/Layout.tsx"
+          "frontend/src/pages/OrderConfirmation.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/components/Layout.tsx"
+          "frontend/src/pages/OrderConfirmation.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Extend the existing admin orders page (AdminOrders.tsx) to allow clicking on individual orders to view full order details in an expanded view or modal",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/AdminOrders.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/AdminOrders.tsx"
         ]
       }
     ]
@@ -39,8 +52,10 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/index.html",
-    "frontend/src/components/Layout.tsx",
+    "frontend/src/App.tsx",
+    "frontend/src/pages/AdminOrders.tsx",
+    "frontend/src/pages/OrderConfirmation.tsx",
+    "frontend/src/pages/OrderDetails.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

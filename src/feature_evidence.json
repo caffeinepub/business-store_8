@@ -2,10 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-html-page-title-from-business-store-to-om-fancy-in-frontend-index-html",
-      "featureTitle": "Update the HTML page title from 'Business Store' to 'OM FANCY' in frontend/index.html",
+      "featureId": "feature-add-a-user-facing-order-details-page-that-displays-comprehensive-information-for-a-single-order-including-order-id-date-status-shipping-information-name-email-address-city-postal-code-country-and-all-ordered-items-with-product-names-quantities-individual-prices-and-total-order-amount",
+      "featureTitle": "Add a user-facing order details page that displays comprehensive information for a single order including order ID, date, status, shipping information (name, email, address, city, postal code, country), and all ordered items with product names, quantities, individual prices, and total order amount",
       "files": [
-        "frontend/index.html"
+        "frontend/src/App.tsx",
+        "frontend/src/pages/OrderDetails.tsx"
       ],
       "components": [
         "authorization@4.0.0",
@@ -22,10 +23,10 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-update-all-visible-branding-text-in-the-layout-component-header-from-business-store-to-om-fancy",
-      "featureTitle": "Update all visible branding text in the Layout component header from 'Business Store' to 'OM FANCY'",
+      "featureId": "feature-add-navigation-from-orderconfirmation-page-to-the-new-order-details-view-allowing-users-to-view-their-completed-order",
+      "featureTitle": "Add navigation from OrderConfirmation page to the new order details view, allowing users to view their completed order",
       "files": [
-        "frontend/src/components/Layout.tsx"
+        "frontend/src/pages/OrderConfirmation.tsx"
       ],
       "components": [
         "authorization@4.0.0",
@@ -38,6 +39,26 @@
       ],
       "testIds": [
         "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-extend-the-existing-admin-orders-page-adminorders-tsx-to-allow-clicking-on-individual-orders-to-view-full-order-details-in-an-expanded-view-or-modal",
+      "featureTitle": "Extend the existing admin orders page (AdminOrders.tsx) to allow clicking on individual orders to view full order details in an expanded view or modal",
+      "files": [
+        "frontend/src/pages/AdminOrders.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
       ],
       "confidence": "high"
     }

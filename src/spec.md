@@ -1,10 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Update the application name from "Business Store" to "OM FANCY" throughout the application.
+**Goal:** Add order details view accessible to both customers and admins.
 
 **Planned changes:**
-- Update the HTML page title in frontend/index.html to "OM FANCY"
-- Update all visible branding text in the Layout component header to "OM FANCY"
+- Create a user-facing order details page showing order ID, date, status, shipping information, ordered items with quantities and prices, and total amount
+- Add navigation from the order confirmation page to view order details
+- Make orders in the admin orders page clickable to view full order details in an expanded view or modal
+- Style all new components with the existing OM FANCY blue-cyan gradient theme and Space Grotesk typography
 
-**User-visible outcome:** The browser tab and all visible branding elements will display "OM FANCY" instead of "Business Store".
+**User-visible outcome:** Customers can view comprehensive details of their completed orders from the confirmation page, and admins can click any order in the admin panel to see full order information including shipping details and itemized products.

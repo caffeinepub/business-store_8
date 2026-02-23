@@ -1,12 +1,13 @@
-import { useParams, Link } from '@tanstack/react-router';
+import { useParams, Link, useNavigate } from '@tanstack/react-router';
 import { useGetOrder, imageBytesToUrl } from '../hooks/useQueries';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { CheckCircle2, Loader2, ShoppingBag } from 'lucide-react';
+import { CheckCircle2, Loader2, ShoppingBag, FileText } from 'lucide-react';
 
 export default function OrderConfirmation() {
   const { orderId } = useParams({ from: '/order-confirmation/$orderId' });
+  const navigate = useNavigate();
   const { data: order, isLoading } = useGetOrder(BigInt(orderId));
 
   if (isLoading) {
@@ -106,7 +107,15 @@ export default function OrderConfirmation() {
             </div>
           </div>
 
-          <div className="pt-4">
+          <div className="pt-4 space-y-3">
+            <Button
+              variant="outline"
+              onClick={() => navigate({ to: '/orders/$orderId', params: { orderId } })}
+              className="w-full h-12 text-base font-semibold border-2 hover:bg-muted/50 transition-all"
+            >
+              <FileText className="h-4 w-4 mr-2" />
+              View Full Order Details
+            </Button>
             <Link to="/">
               <Button className="w-full h-14 text-lg font-bold shadow-soft hover:shadow-medium transition-all" size="lg">
                 Continue Shopping

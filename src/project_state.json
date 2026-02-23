@@ -1,29 +1,48 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "New project",
-  "architectural_notes": [],
+  "summary": "E-commerce store application with order management functionality",
+  "architectural_notes": [
+    "E-commerce store named 'OM FANCY'",
+    "Order management system"
+  ],
   "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-update-the-html-page-title-from-business-store-to-om-fancy-in-frontend-index-html",
-      "title": "Update the HTML page title from 'Business Store' to 'OM FANCY' in frontend/index.html",
+      "id": "feature-add-a-user-facing-order-details-page-that-displays-comprehensive-information-for-a-single-order-including-order-id-date-status-shipping-information-name-email-address-city-postal-code-country-and-all-ordered-items-with-product-names-quantities-individual-prices-and-total-order-amount",
+      "title": "Add a user-facing order details page that displays comprehensive information for a single order including order ID, date, status, shipping information (name, email, address, city, postal code, country), and all ordered items with product names, quantities, individual prices, and total order amount",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-update-all-visible-branding-text-in-the-layout-component-header-from-business-store-to-om-fancy",
-      "title": "Update all visible branding text in the Layout component header from 'Business Store' to 'OM FANCY'",
+      "id": "feature-add-navigation-from-orderconfirmation-page-to-the-new-order-details-view-allowing-users-to-view-their-completed-order",
+      "title": "Add navigation from OrderConfirmation page to the new order details view, allowing users to view their completed order",
       "reqIds": [
         "REQ-2"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-extend-the-existing-admin-orders-page-adminorders-tsx-to-allow-clicking-on-individual-orders-to-view-full-order-details-in-an-expanded-view-or-modal",
+      "title": "Extend the existing admin orders page (AdminOrders.tsx) to allow clicking on individual orders to view full order details in an expanded view or modal",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
     }
   ],
-  "new_feature_requests": [],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Display order details",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
   "projectName": "OM FANCY",
   "clarification_mode": "instant",
   "clarification_rounds": 0

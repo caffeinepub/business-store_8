@@ -1,35 +1,58 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Update application name from Business Store to OM FANCY",
+  "title": "Display order details view",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Update the HTML page title from 'Business Store' to 'OM FANCY' in frontend/index.html",
+      "summary": "Create user-facing order details page displaying comprehensive order information including ID, date, status, shipping details, and itemized products with totals",
       "acceptanceCriteria": [
-        "Browser tab displays 'OM FANCY' as the page title",
-        "The title tag in index.html contains 'OM FANCY'"
+        "Order details page is accessible from the order confirmation page and product catalog",
+        "Page displays all order information including shipping details and itemized products",
+        "Design follows the existing OM FANCY blue-cyan gradient theme with Space Grotesk typography",
+        "Order total is calculated and displayed correctly"
       ],
       "file_operations": [
         {
-          "path": "frontend/index.html",
+          "path": "frontend/src/pages/OrderDetails.tsx",
+          "operation": "create",
+          "description": "Create new OrderDetails page component that fetches and displays comprehensive order information using the getOrder backend method. Display order ID, customer name (from user profile), all ordered products with images from frontend/public/assets/generated/product-placeholder.dim_300x300.png fallback, quantities, individual prices, and calculated total. Apply blue-cyan gradient styling consistent with existing pages and use Space Grotesk typography. Include back navigation button."
+        },
+        {
+          "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Change the <title> tag content from 'Business Store' to 'OM FANCY'"
+          "description": "Add new route '/orders/:orderId' that renders the OrderDetails component. Register this route in the router configuration alongside existing routes for product catalog, checkout, order confirmation, and admin pages."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Update all visible branding text in the Layout component header from 'Business Store' to 'OM FANCY'",
+      "summary": "Add navigation from OrderConfirmation page to order details view",
       "acceptanceCriteria": [
-        "Header navigation displays 'OM FANCY' as the main branding",
-        "Any footer or branding elements consistently show 'OM FANCY'"
+        "Link or button on order confirmation page navigates to order details",
+        "Navigation preserves order ID context"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/Layout.tsx",
+          "path": "frontend/src/pages/OrderConfirmation.tsx",
           "operation": "modify",
-          "description": "Update the branding text in the header navigation and any footer elements from 'Business Store' to 'OM FANCY'"
+          "description": "Add a 'View Order Details' button or link that navigates to '/orders/{orderId}' route. Use the orderId from URL params to construct the navigation path. Style the button consistently with the existing checkout and gradient theme."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Extend admin orders page to allow viewing individual order details in expanded view or modal",
+      "acceptanceCriteria": [
+        "Admin can click on any order in the list to view detailed information",
+        "Details view shows the same comprehensive order information as the user-facing page",
+        "UI clearly indicates which orders are clickable"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/AdminOrders.tsx",
+          "operation": "modify",
+          "description": "Make each accordion item clickable to navigate to the OrderDetails page at '/orders/{orderId}'. Add visual indicators (hover states, cursor pointer) to show orders are clickable. Alternatively, add a 'View Full Details' button within each accordion item that navigates to the detailed view."
         }
       ]
     }

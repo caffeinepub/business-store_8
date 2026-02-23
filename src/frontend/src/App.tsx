@@ -5,6 +5,7 @@ import Layout from './components/Layout';
 import ProductCatalog from './pages/ProductCatalog';
 import Checkout from './pages/Checkout';
 import OrderConfirmation from './pages/OrderConfirmation';
+import OrderDetails from './pages/OrderDetails';
 import AdminProducts from './pages/AdminProducts';
 import AdminOrders from './pages/AdminOrders';
 import AdminGuard from './components/AdminGuard';
@@ -35,6 +36,12 @@ const orderConfirmationRoute = createRoute({
   component: OrderConfirmation,
 });
 
+const orderDetailsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/orders/$orderId',
+  component: OrderDetails,
+});
+
 const adminProductsRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/admin/products',
@@ -59,6 +66,7 @@ const routeTree = rootRoute.addChildren([
   indexRoute,
   checkoutRoute,
   orderConfirmationRoute,
+  orderDetailsRoute,
   adminProductsRoute,
   adminOrdersRoute,
 ]);
@@ -79,4 +87,3 @@ export default function App() {
     </ThemeProvider>
   );
 }
-

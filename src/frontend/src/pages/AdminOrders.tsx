@@ -1,11 +1,14 @@
 import { useGetOrders, imageBytesToUrl } from '../hooks/useQueries';
+import { useNavigate } from '@tanstack/react-router';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Loader2, Package, ShoppingBag } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Loader2, Package, ShoppingBag, ExternalLink } from 'lucide-react';
 
 export default function AdminOrders() {
   const { data: orders = [], isLoading } = useGetOrders();
+  const navigate = useNavigate();
 
   if (isLoading) {
     return (
@@ -120,6 +123,16 @@ export default function AdminOrders() {
                         <span>Total</span>
                         <span className="text-primary">${(Number(order.total) / 100).toFixed(2)}</span>
                       </div>
+                    </div>
+
+                    <div className="pt-2">
+                      <Button
+                        onClick={() => navigate({ to: `/orders/${order.id.toString()}` })}
+                        className="w-full h-12 text-base font-semibold shadow-soft hover:shadow-medium transition-all"
+                      >
+                        <ExternalLink className="h-4 w-4 mr-2" />
+                        View Full Order Details
+                      </Button>
                     </div>
                   </div>
                 </AccordionContent>
