@@ -1,54 +1,22 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "E-commerce application with customer account management and order tracking features",
+  "summary": "New project",
   "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-create-a-new-my-account-page-route-at-account-that-displays-the-authenticated-customer-s-order-history-with-order-ids-dates-statuses-and-total-amounts",
-      "title": "Create a new 'My Account' page route at /account that displays the authenticated customer's order history with order IDs, dates, statuses, and total amounts",
+      "id": "feature-change-the-welcome-text-from-welcome-to-business-store-to-welcome-to-om-fancy-gift-collection-in-the-product-catalog-hero-section",
+      "title": "Change the welcome text from 'WELCOME TO BUSINESS STORE' to 'WELCOME TO OM FANCY & GIFT COLLECTION' in the product catalog hero section",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
-    },
-    {
-      "id": "feature-add-a-my-account-navigation-link-in-the-header-that-is-visible-only-to-authenticated-non-admin-users",
-      "title": "Add a 'My Account' navigation link in the header that is visible only to authenticated non-admin users",
-      "reqIds": [
-        "REQ-2"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-from-the-my-account-page-allow-customers-to-click-on-any-order-to-navigate-to-the-existing-order-details-page-to-view-full-order-information-including-products-ordered",
-      "title": "From the My Account page, allow customers to click on any order to navigate to the existing order details page to view full order information including products ordered",
-      "reqIds": [
-        "REQ-3"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-display-a-helpful-message-on-the-my-account-page-when-the-customer-has-no-orders-yet",
-      "title": "Display a helpful message on the My Account page when the customer has no orders yet",
-      "reqIds": [
-        "REQ-4"
-      ],
-      "version": 1
     }
   ],
-  "new_feature_requests": [
-    {
-      "id": "AR-1",
-      "summary": "Create 'My Account' section for customers to view ordered products and order status",
-      "reqIds": [],
-      "status": "pending"
-    }
-  ],
-  "gameProjectType": "none",
-  "projectName": "OM Fancy",
+  "new_feature_requests": [],
+  "projectName": "OM FANCY & GIFT COLLECTION",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

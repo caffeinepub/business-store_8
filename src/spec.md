@@ -1,12 +1,9 @@
 # Specification
 
 ## Summary
-**Goal:** Add a "My Account" page where customers can view their order history and check order status.
+**Goal:** Update the welcome message in the hero section to reflect the store name "OM FANCY & GIFT COLLECTION".
 
 **Planned changes:**
-- Create a new /account route displaying the customer's order history with order IDs, dates, statuses, and total amounts
-- Add a "My Account" navigation link in the header visible only to authenticated non-admin users
-- Make each order in the list clickable to navigate to the existing order details page
-- Display a helpful message when the customer has no orders yet
+- Change the hero section welcome text from "WELCOME TO BUSINESS STORE" to "WELCOME TO OM FANCY & GIFT COLLECTION"
 
-**User-visible outcome:** Customers can click "My Account" in the header to view all their past orders and click on any order to see full details including products ordered.
+**User-visible outcome:** Users visiting the product catalog will see the updated welcome message "WELCOME TO OM FANCY & GIFT COLLECTION" in the hero section.

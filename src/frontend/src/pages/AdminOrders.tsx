@@ -1,10 +1,10 @@
-import { useGetOrders, imageBytesToUrl } from '../hooks/useQueries';
+import { useGetOrders, imageBytesToUrl, formatPaymentMethod } from '../hooks/useQueries';
 import { useNavigate } from '@tanstack/react-router';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
-import { Loader2, Package, ShoppingBag, ExternalLink } from 'lucide-react';
+import { Loader2, Package, ShoppingBag, ExternalLink, CreditCard } from 'lucide-react';
 
 export default function AdminOrders() {
   const { data: orders = [], isLoading } = useGetOrders();
@@ -74,6 +74,16 @@ export default function AdminOrders() {
                       <p className="font-mono text-sm bg-muted px-4 py-3 rounded-lg break-all">
                         {order.customer.toString()}
                       </p>
+                    </div>
+
+                    <div>
+                      <h4 className="text-sm font-semibold text-muted-foreground mb-3">PAYMENT METHOD</h4>
+                      <div className="flex items-center gap-3 p-4 rounded-xl border-2 bg-card">
+                        <div className="p-2 rounded-lg bg-accent/10">
+                          <CreditCard className="h-5 w-5 text-accent" />
+                        </div>
+                        <p className="text-base font-bold">{formatPaymentMethod(order.paymentMethod)}</p>
+                      </div>
                     </div>
 
                     <div>

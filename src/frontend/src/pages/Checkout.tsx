@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { useNavigate } from '@tanstack/react-router';
 import { useGetCart, useCheckout, imageBytesToUrl } from '../hooks/useQueries';
+import { PaymentMethod } from '../backend';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { Loader2, ShoppingCart, CreditCard } from 'lucide-react';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Loader2, ShoppingCart, CreditCard, Wallet, Banknote } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function Checkout() {
@@ -21,6 +23,8 @@ export default function Checkout() {
     city: '',
     postalCode: '',
   });
+
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>(PaymentMethod.cashOnDelivery);
 
   const total = cartItems.reduce((sum, item) => sum + Number(item.price), 0);
 
@@ -51,7 +55,7 @@ export default function Checkout() {
     }
 
     try {
-      const orderId = await checkout.mutateAsync();
+      const orderId = await checkout.mutateAsync(paymentMethod);
       toast.success('Order placed successfully!');
       navigate({ to: '/order-confirmation/$orderId', params: { orderId: orderId.toString() } });
     } catch (error: any) {
@@ -185,6 +189,49 @@ export default function Checkout() {
                       className="h-12"
                     />
                   </div>
+                </div>
+
+                <Separator className="my-6" />
+
+                <div className="space-y-3">
+                  <Label className="text-base font-semibold">Payment Method</Label>
+                  <RadioGroup
+                    value={paymentMethod}
+                    onValueChange={(value) => setPaymentMethod(value as PaymentMethod)}
+                    className="space-y-3"
+                  >
+                    <div className="flex items-center space-x-3 border-2 rounded-xl p-4 hover:border-primary/50 transition-colors cursor-pointer">
+                      <RadioGroupItem value={PaymentMethod.cashOnDelivery} id="cod" />
+                      <Label
+                        htmlFor="cod"
+                        className="flex items-center gap-3 flex-1 cursor-pointer"
+                      >
+                        <div className="p-2 rounded-lg bg-accent/10">
+                          <Banknote className="h-5 w-5 text-accent" />
+                        </div>
+                        <div>
+                          <p className="font-semibold text-base">Cash on Delivery</p>
+                          <p className="text-sm text-muted-foreground">Pay when you receive your order</p>
+                        </div>
+                      </Label>
+                    </div>
+
+                    <div className="flex items-center space-x-3 border-2 rounded-xl p-4 hover:border-primary/50 transition-colors cursor-pointer">
+                      <RadioGroupItem value={PaymentMethod.upi} id="upi" />
+                      <Label
+                        htmlFor="upi"
+                        className="flex items-center gap-3 flex-1 cursor-pointer"
+                      >
+                        <div className="p-2 rounded-lg bg-primary/10">
+                          <Wallet className="h-5 w-5 text-primary" />
+                        </div>
+                        <div>
+                          <p className="font-semibold text-base">UPI</p>
+                          <p className="text-sm text-muted-foreground">Pay using UPI apps</p>
+                        </div>
+                      </Label>
+                    </div>
+                  </RadioGroup>
                 </div>
 
                 <Button

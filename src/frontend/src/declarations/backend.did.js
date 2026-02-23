@@ -26,6 +26,10 @@ export const UserRole = IDL.Variant({
   'user' : IDL.Null,
   'guest' : IDL.Null,
 });
+export const PaymentMethod = IDL.Variant({
+  'upi' : IDL.Null,
+  'cashOnDelivery' : IDL.Null,
+});
 export const UserProfile = IDL.Record({ 'name' : IDL.Text });
 export const CartItem = IDL.Record({
   'id' : Id,
@@ -44,6 +48,7 @@ export const Product = IDL.Record({
 export const Order = IDL.Record({
   'id' : Id,
   'total' : IDL.Nat,
+  'paymentMethod' : PaymentMethod,
   'customer' : IDL.Principal,
   'products' : IDL.Vec(Product),
 });
@@ -79,7 +84,7 @@ export const idlService = IDL.Service({
   'addProduct' : IDL.Func([IDL.Text, IDL.Text, IDL.Nat, Image], [], []),
   'addToCart' : IDL.Func([Id], [], []),
   'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
-  'checkout' : IDL.Func([], [IDL.Nat], []),
+  'checkout' : IDL.Func([PaymentMethod], [IDL.Nat], []),
   'clearCart' : IDL.Func([], [], []),
   'deleteProduct' : IDL.Func([Id], [], []),
   'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
@@ -132,6 +137,10 @@ export const idlFactory = ({ IDL }) => {
     'user' : IDL.Null,
     'guest' : IDL.Null,
   });
+  const PaymentMethod = IDL.Variant({
+    'upi' : IDL.Null,
+    'cashOnDelivery' : IDL.Null,
+  });
   const UserProfile = IDL.Record({ 'name' : IDL.Text });
   const CartItem = IDL.Record({
     'id' : Id,
@@ -150,6 +159,7 @@ export const idlFactory = ({ IDL }) => {
   const Order = IDL.Record({
     'id' : Id,
     'total' : IDL.Nat,
+    'paymentMethod' : PaymentMethod,
     'customer' : IDL.Principal,
     'products' : IDL.Vec(Product),
   });
@@ -185,7 +195,7 @@ export const idlFactory = ({ IDL }) => {
     'addProduct' : IDL.Func([IDL.Text, IDL.Text, IDL.Nat, Image], [], []),
     'addToCart' : IDL.Func([Id], [], []),
     'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
-    'checkout' : IDL.Func([], [IDL.Nat], []),
+    'checkout' : IDL.Func([PaymentMethod], [IDL.Nat], []),
     'clearCart' : IDL.Func([], [], []),
     'deleteProduct' : IDL.Func([Id], [], []),
     'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),

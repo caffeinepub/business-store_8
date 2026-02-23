@@ -42,7 +42,7 @@ export default function ProductCatalog() {
         <div className="absolute inset-0">
           <img
             src="/assets/generated/hero-banner.dim_1200x400.png"
-            alt="Business Store"
+            alt="OM FANCY & GIFT COLLECTION"
             className="w-full h-full object-cover opacity-40"
           />
         </div>
@@ -57,7 +57,7 @@ export default function ProductCatalog() {
               Welcome to
               <br />
               <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
-                Business Store
+                OM FANCY & GIFT COLLECTION
               </span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl">

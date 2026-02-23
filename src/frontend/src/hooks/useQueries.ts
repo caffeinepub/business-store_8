@@ -1,6 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useActor } from './useActor';
 import type { Product, CartItem, Order, UserProfile } from '../backend';
+import { PaymentMethod } from '../backend';
 import { Principal } from '@dfinity/principal';
 
 // Product Queries
@@ -80,9 +81,9 @@ export function useCheckout() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async () => {
+    mutationFn: async (paymentMethod: PaymentMethod) => {
       if (!actor) throw new Error('Actor not available');
-      return actor.checkout();
+      return actor.checkout(paymentMethod);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['cart'] });
@@ -275,3 +276,14 @@ export function imageBytesToUrl(imageBytes: Uint8Array): string {
   return URL.createObjectURL(blob);
 }
 
+// Helper function to format payment method for display
+export function formatPaymentMethod(paymentMethod: PaymentMethod): string {
+  switch (paymentMethod) {
+    case PaymentMethod.cashOnDelivery:
+      return 'Cash on Delivery';
+    case PaymentMethod.upi:
+      return 'UPI';
+    default:
+      return 'Unknown';
+  }
+}

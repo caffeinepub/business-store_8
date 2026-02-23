@@ -1,9 +1,9 @@
 import { useParams, Link, useNavigate } from '@tanstack/react-router';
-import { useGetOrder, imageBytesToUrl } from '../hooks/useQueries';
+import { useGetOrder, imageBytesToUrl, formatPaymentMethod } from '../hooks/useQueries';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { CheckCircle2, Loader2, ShoppingBag, FileText } from 'lucide-react';
+import { CheckCircle2, Loader2, ShoppingBag, FileText, CreditCard } from 'lucide-react';
 
 export default function OrderConfirmation() {
   const { orderId } = useParams({ from: '/order-confirmation/$orderId' });
@@ -85,6 +85,18 @@ export default function OrderConfirmation() {
                 </div>
               );
             })}
+          </div>
+
+          <Separator />
+
+          <div className="flex items-center gap-3 p-4 rounded-xl border-2 bg-muted/20">
+            <div className="p-2 rounded-lg bg-accent/10">
+              <CreditCard className="h-5 w-5 text-accent" />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-muted-foreground">Payment Method</p>
+              <p className="text-base font-bold">{formatPaymentMethod(order.paymentMethod)}</p>
+            </div>
           </div>
 
           <Separator />

@@ -7,10 +7,12 @@ import Iter "mo:core/Iter";
 import Array "mo:core/Array";
 import Principal "mo:core/Principal";
 
+
 import MixinAuthorization "authorization/MixinAuthorization";
 import MixinStorage "blob-storage/Mixin";
 import AccessControl "authorization/access-control";
 import Storage "blob-storage/Storage";
+
 
 actor {
   let accessControlState = AccessControl.initState();
@@ -44,11 +46,17 @@ actor {
   module Order {
     public type Id = Nat;
 
+    public type PaymentMethod = {
+      #cashOnDelivery;
+      #upi;
+    };
+
     public type Order = {
       id : Id;
       customer : Principal;
       products : [Product.Product];
       total : Nat;
+      paymentMethod : PaymentMethod;
     };
   };
 
@@ -180,7 +188,7 @@ actor {
   };
 
   // Order processing (User only)
-  public shared ({ caller }) func checkout() : async Nat {
+  public shared ({ caller }) func checkout(paymentMethod : Order.PaymentMethod) : async Nat {
     if (not (AccessControl.hasPermission(accessControlState, caller, #user))) {
       Runtime.trap("Unauthorized: Only users can checkout");
     };
@@ -201,6 +209,7 @@ actor {
       customer = caller;
       products;
       total;
+      paymentMethod;
     };
 
     ordersMap.add(orderId, order);

@@ -1,9 +1,9 @@
 import { useParams, Link, useNavigate } from '@tanstack/react-router';
-import { useGetOrder, imageBytesToUrl, useGetCallerUserProfile } from '../hooks/useQueries';
+import { useGetOrder, imageBytesToUrl, useGetCallerUserProfile, formatPaymentMethod } from '../hooks/useQueries';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { ArrowLeft, Loader2, Package, User } from 'lucide-react';
+import { ArrowLeft, Loader2, Package, User, CreditCard } from 'lucide-react';
 
 export default function OrderDetails() {
   const { orderId } = useParams({ from: '/orders/$orderId' });
@@ -78,10 +78,9 @@ export default function OrderDetails() {
           <CardContent className="space-y-4">
             <div>
               <p className="text-sm font-semibold text-muted-foreground mb-2">Name</p>
-              <p className="text-lg font-semibold">
-                {userProfile?.name || 'Customer'}
-              </p>
+              <p className="text-base font-medium">{userProfile?.name || 'N/A'}</p>
             </div>
+            <Separator />
             <div>
               <p className="text-sm font-semibold text-muted-foreground mb-2">Principal ID</p>
               <p className="font-mono text-sm bg-muted px-4 py-3 rounded-lg break-all">
@@ -91,46 +90,60 @@ export default function OrderDetails() {
           </CardContent>
         </Card>
 
+        {/* Payment Method */}
+        <Card className="border-2">
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-lg bg-primary/10">
+                <CreditCard className="h-5 w-5 text-primary" />
+              </div>
+              <CardTitle className="text-xl">Payment Method</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <p className="text-lg font-bold">{formatPaymentMethod(order.paymentMethod)}</p>
+          </CardContent>
+        </Card>
+
         {/* Order Items */}
         <Card className="border-2">
           <CardHeader>
-            <CardTitle className="text-xl">Order Items</CardTitle>
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-lg bg-primary/10">
+                <Package className="h-5 w-5 text-primary" />
+              </div>
+              <CardTitle className="text-xl">Order Items</CardTitle>
+            </div>
             <CardDescription>
-              {order.products.length} {order.products.length === 1 ? 'item' : 'items'} in this order
+              {order.products.length} {order.products.length === 1 ? 'item' : 'items'}
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {order.products.map((product, index) => {
-                const imageUrl = imageBytesToUrl(product.image);
-                return (
-                  <div
-                    key={`${product.id}-${index}`}
-                    className="flex gap-4 p-4 rounded-xl border-2 bg-card hover:border-primary/30 transition-colors"
-                  >
-                    <img
-                      src={imageUrl}
-                      alt={product.name}
-                      className="w-24 h-24 object-cover rounded-lg"
-                      onLoad={() => URL.revokeObjectURL(imageUrl)}
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.src = '/assets/generated/product-placeholder.dim_300x300.png';
-                      }}
-                    />
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-lg mb-1">{product.name}</h3>
-                      <p className="text-sm text-muted-foreground line-clamp-2 mb-2">
-                        {product.description}
-                      </p>
-                      <p className="text-xl font-bold text-primary">
-                        ${(Number(product.price) / 100).toFixed(2)}
-                      </p>
-                    </div>
+          <CardContent className="space-y-4">
+            {order.products.map((product, index) => {
+              const imageUrl = imageBytesToUrl(product.image);
+              return (
+                <div
+                  key={`${product.id}-${index}`}
+                  className="flex gap-4 p-4 rounded-xl border-2 bg-card hover:border-primary/30 transition-colors"
+                >
+                  <img
+                    src={imageUrl}
+                    alt={product.name}
+                    className="w-24 h-24 object-cover rounded-lg"
+                    onLoad={() => URL.revokeObjectURL(imageUrl)}
+                  />
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-lg mb-1">{product.name}</h3>
+                    <p className="text-sm text-muted-foreground line-clamp-2 mb-2">
+                      {product.description}
+                    </p>
+                    <p className="text-xl font-bold text-primary">
+                      ${(Number(product.price) / 100).toFixed(2)}
+                    </p>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </CardContent>
         </Card>
 
@@ -159,14 +172,6 @@ export default function OrderDetails() {
             </div>
           </CardContent>
         </Card>
-
-        <div className="pt-4">
-          <Link to="/">
-            <Button className="w-full h-14 text-lg font-bold shadow-soft hover:shadow-medium transition-all" size="lg">
-              Continue Shopping
-            </Button>
-          </Link>
-        </div>
       </div>
     </div>
   );

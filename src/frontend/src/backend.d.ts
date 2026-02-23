@@ -19,6 +19,7 @@ export interface CartItem {
 export interface Order {
     id: Id;
     total: bigint;
+    paymentMethod: PaymentMethod;
     customer: Principal;
     products: Array<Product>;
 }
@@ -32,6 +33,10 @@ export interface Product {
     image: Image;
     price: bigint;
 }
+export enum PaymentMethod {
+    upi = "upi",
+    cashOnDelivery = "cashOnDelivery"
+}
 export enum UserRole {
     admin = "admin",
     user = "user",
@@ -41,7 +46,7 @@ export interface backendInterface {
     addProduct(name: string, description: string, price: bigint, image: Image): Promise<void>;
     addToCart(productId: Id): Promise<void>;
     assignCallerUserRole(user: Principal, role: UserRole): Promise<void>;
-    checkout(): Promise<bigint>;
+    checkout(paymentMethod: PaymentMethod): Promise<bigint>;
     clearCart(): Promise<void>;
     deleteProduct(id: Id): Promise<void>;
     getCallerUserProfile(): Promise<UserProfile | null>;

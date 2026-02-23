@@ -22,9 +22,12 @@ export type Image = Uint8Array;
 export interface Order {
   'id' : Id,
   'total' : bigint,
+  'paymentMethod' : PaymentMethod,
   'customer' : Principal,
   'products' : Array<Product>,
 }
+export type PaymentMethod = { 'upi' : null } |
+  { 'cashOnDelivery' : null };
 export interface Product {
   'id' : Id,
   'name' : string,
@@ -67,7 +70,7 @@ export interface _SERVICE {
   'addProduct' : ActorMethod<[string, string, bigint, Image], undefined>,
   'addToCart' : ActorMethod<[Id], undefined>,
   'assignCallerUserRole' : ActorMethod<[Principal, UserRole], undefined>,
-  'checkout' : ActorMethod<[], bigint>,
+  'checkout' : ActorMethod<[PaymentMethod], bigint>,
   'clearCart' : ActorMethod<[], undefined>,
   'deleteProduct' : ActorMethod<[Id], undefined>,
   'getCallerUserProfile' : ActorMethod<[], [] | [UserProfile]>,
