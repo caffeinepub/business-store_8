@@ -1,12 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Add order details view accessible to both customers and admins.
+**Goal:** Add a "My Account" page where customers can view their order history and check order status.
 
 **Planned changes:**
-- Create a user-facing order details page showing order ID, date, status, shipping information, ordered items with quantities and prices, and total amount
-- Add navigation from the order confirmation page to view order details
-- Make orders in the admin orders page clickable to view full order details in an expanded view or modal
-- Style all new components with the existing OM FANCY blue-cyan gradient theme and Space Grotesk typography
+- Create a new /account route displaying the customer's order history with order IDs, dates, statuses, and total amounts
+- Add a "My Account" navigation link in the header visible only to authenticated non-admin users
+- Make each order in the list clickable to navigate to the existing order details page
+- Display a helpful message when the customer has no orders yet
 
-**User-visible outcome:** Customers can view comprehensive details of their completed orders from the confirmation page, and admins can click any order in the admin panel to see full order information including shipping details and itemized products.
+**User-visible outcome:** Customers can click "My Account" in the header to view all their past orders and click on any order to see full details including products ordered.

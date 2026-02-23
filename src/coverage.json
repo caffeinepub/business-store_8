@@ -1,48 +1,59 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-23T04:30:51.200Z",
+  "generatedAt": "2026-02-23T04:41:01.353Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 3,
-    "implemented": 3,
+    "total": 4,
+    "implemented": 4,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Add a user-facing order details page that displays comprehensive information for a single order including order ID, date, status, shipping information (name, email, address, city, postal code, country), and all ordered items with product names, quantities, individual prices, and total order amount",
+        "summary": "Create a new 'My Account' page route at /account that displays the authenticated customer's order history with order IDs, dates, statuses, and total amounts",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/OrderDetails.tsx",
+          "frontend/src/pages/MyAccount.tsx",
           "frontend/src/App.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/OrderDetails.tsx",
+          "frontend/src/pages/MyAccount.tsx",
           "frontend/src/App.tsx"
         ]
       },
       {
         "id": "REQ-2",
-        "summary": "Add navigation from OrderConfirmation page to the new order details view, allowing users to view their completed order",
+        "summary": "Add a 'My Account' navigation link in the header that is visible only to authenticated non-admin users",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/OrderConfirmation.tsx"
+          "frontend/src/components/Layout.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/OrderConfirmation.tsx"
+          "frontend/src/components/Layout.tsx"
         ]
       },
       {
         "id": "REQ-3",
-        "summary": "Extend the existing admin orders page (AdminOrders.tsx) to allow clicking on individual orders to view full order details in an expanded view or modal",
+        "summary": "From the My Account page, allow customers to click on any order to navigate to the existing order details page to view full order information including products ordered",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/AdminOrders.tsx"
+          "frontend/src/pages/MyAccount.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/AdminOrders.tsx"
+          "frontend/src/pages/MyAccount.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Display a helpful message on the My Account page when the customer has no orders yet",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/MyAccount.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/MyAccount.tsx"
         ]
       }
     ]
@@ -53,9 +64,8 @@
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
     "frontend/src/App.tsx",
-    "frontend/src/pages/AdminOrders.tsx",
-    "frontend/src/pages/OrderConfirmation.tsx",
-    "frontend/src/pages/OrderDetails.tsx",
+    "frontend/src/components/Layout.tsx",
+    "frontend/src/pages/MyAccount.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

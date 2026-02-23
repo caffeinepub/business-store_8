@@ -2,11 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-add-a-user-facing-order-details-page-that-displays-comprehensive-information-for-a-single-order-including-order-id-date-status-shipping-information-name-email-address-city-postal-code-country-and-all-ordered-items-with-product-names-quantities-individual-prices-and-total-order-amount",
-      "featureTitle": "Add a user-facing order details page that displays comprehensive information for a single order including order ID, date, status, shipping information (name, email, address, city, postal code, country), and all ordered items with product names, quantities, individual prices, and total order amount",
+      "featureId": "feature-create-a-new-my-account-page-route-at-account-that-displays-the-authenticated-customer-s-order-history-with-order-ids-dates-statuses-and-total-amounts",
+      "featureTitle": "Create a new 'My Account' page route at /account that displays the authenticated customer's order history with order IDs, dates, statuses, and total amounts",
       "files": [
         "frontend/src/App.tsx",
-        "frontend/src/pages/OrderDetails.tsx"
+        "frontend/src/pages/MyAccount.tsx"
       ],
       "components": [
         "authorization@4.0.0",
@@ -23,10 +23,10 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-add-navigation-from-orderconfirmation-page-to-the-new-order-details-view-allowing-users-to-view-their-completed-order",
-      "featureTitle": "Add navigation from OrderConfirmation page to the new order details view, allowing users to view their completed order",
+      "featureId": "feature-add-a-my-account-navigation-link-in-the-header-that-is-visible-only-to-authenticated-non-admin-users",
+      "featureTitle": "Add a 'My Account' navigation link in the header that is visible only to authenticated non-admin users",
       "files": [
-        "frontend/src/pages/OrderConfirmation.tsx"
+        "frontend/src/components/Layout.tsx"
       ],
       "components": [
         "authorization@4.0.0",
@@ -43,10 +43,10 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-extend-the-existing-admin-orders-page-adminorders-tsx-to-allow-clicking-on-individual-orders-to-view-full-order-details-in-an-expanded-view-or-modal",
-      "featureTitle": "Extend the existing admin orders page (AdminOrders.tsx) to allow clicking on individual orders to view full order details in an expanded view or modal",
+      "featureId": "feature-from-the-my-account-page-allow-customers-to-click-on-any-order-to-navigate-to-the-existing-order-details-page-to-view-full-order-information-including-products-ordered",
+      "featureTitle": "From the My Account page, allow customers to click on any order to navigate to the existing order details page to view full order information including products ordered",
       "files": [
-        "frontend/src/pages/AdminOrders.tsx"
+        "frontend/src/pages/MyAccount.tsx"
       ],
       "components": [
         "authorization@4.0.0",
@@ -59,6 +59,26 @@
       ],
       "testIds": [
         "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-display-a-helpful-message-on-the-my-account-page-when-the-customer-has-no-orders-yet",
+      "featureTitle": "Display a helpful message on the My Account page when the customer has no orders yet",
+      "files": [
+        "frontend/src/pages/MyAccount.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
       ],
       "confidence": "high"
     }

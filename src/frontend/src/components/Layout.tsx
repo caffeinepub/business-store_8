@@ -12,6 +12,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const routerState = useRouterState();
   const currentPath = routerState.location.pathname;
 
+  const isAuthenticated = !!identity;
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <UserProfileSetup />
@@ -39,6 +41,20 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <span className="absolute -bottom-[21px] left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent" />
               )}
             </Link>
+            
+            {isAuthenticated && !isAdmin && (
+              <Link
+                to="/account"
+                className={`text-sm font-semibold transition-all hover:text-primary relative ${
+                  currentPath === '/account' ? 'text-foreground' : 'text-muted-foreground'
+                }`}
+              >
+                My Account
+                {currentPath === '/account' && (
+                  <span className="absolute -bottom-[21px] left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent" />
+                )}
+              </Link>
+            )}
             
             {identity && isAdmin && (
               <>

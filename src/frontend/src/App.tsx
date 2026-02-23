@@ -6,6 +6,7 @@ import ProductCatalog from './pages/ProductCatalog';
 import Checkout from './pages/Checkout';
 import OrderConfirmation from './pages/OrderConfirmation';
 import OrderDetails from './pages/OrderDetails';
+import MyAccount from './pages/MyAccount';
 import AdminProducts from './pages/AdminProducts';
 import AdminOrders from './pages/AdminOrders';
 import AdminGuard from './components/AdminGuard';
@@ -42,6 +43,12 @@ const orderDetailsRoute = createRoute({
   component: OrderDetails,
 });
 
+const myAccountRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/account',
+  component: MyAccount,
+});
+
 const adminProductsRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/admin/products',
@@ -67,6 +74,7 @@ const routeTree = rootRoute.addChildren([
   checkoutRoute,
   orderConfirmationRoute,
   orderDetailsRoute,
+  myAccountRoute,
   adminProductsRoute,
   adminOrdersRoute,
 ]);

@@ -1,65 +1,92 @@
 {
   "kind": "build_request",
-  "title": "Display order details view",
-  "projectName": "OM FANCY",
+  "title": "Add My Account page for customers to view orders",
+  "projectName": "OM Fancy",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Add a user-facing order details page that displays comprehensive information for a single order including order ID, date, status, shipping information (name, email, address, city, postal code, country), and all ordered items with product names, quantities, individual prices, and total order amount",
+      "text": "Create a new 'My Account' page route at /account that displays the authenticated customer's order history with order IDs, dates, statuses, and total amounts",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-final"
+          "msg-7"
+        ],
+        "quotes": [
+          "CRAET A OPTION OF \"MY ACCOUNT\" FOR CUSTOMERS WHERE THEY CAN CHECK THEIR PRODUCTS ORDERED AND ORDER STATUS."
         ]
       },
       "acceptanceCriteria": [
-        "Order details page is accessible from the order confirmation page and product catalog",
-        "Page displays all order information including shipping details and itemized products",
-        "Design follows the existing OM FANCY blue-cyan gradient theme with Space Grotesk typography",
-        "Order total is calculated and displayed correctly"
+        "New route /account exists and is accessible to authenticated customers",
+        "Page displays a list of all orders for the logged-in customer",
+        "Each order shows order ID, order date, order status, and total amount",
+        "Orders are sorted by date (most recent first)"
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Add navigation from OrderConfirmation page to the new order details view, allowing users to view their completed order",
+      "text": "Add a 'My Account' navigation link in the header that is visible only to authenticated non-admin users",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-final"
+          "msg-7"
+        ],
+        "quotes": [
+          "CRAET A OPTION OF \"MY ACCOUNT\""
         ]
       },
       "acceptanceCriteria": [
-        "Link or button on order confirmation page navigates to order details",
-        "Navigation preserves order ID context"
+        "Navigation link labeled 'My Account' appears in the header Layout component",
+        "Link is only visible when user is authenticated",
+        "Link is hidden for admin users (admins have separate Orders section)",
+        "Clicking the link navigates to /account page"
       ]
     },
     {
       "id": "REQ-3",
-      "text": "Extend the existing admin orders page (AdminOrders.tsx) to allow clicking on individual orders to view full order details in an expanded view or modal",
+      "text": "From the My Account page, allow customers to click on any order to navigate to the existing order details page to view full order information including products ordered",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-final"
+          "msg-7"
+        ],
+        "quotes": [
+          "WHERE THEY CAN CHECK THEIR PRODUCTS ORDERED AND ORDER STATUS"
         ]
       },
       "acceptanceCriteria": [
-        "Admin can click on any order in the list to view detailed information",
-        "Details view shows the same comprehensive order information as the user-facing page",
-        "UI clearly indicates which orders are clickable"
+        "Each order in the My Account list is clickable",
+        "Clicking an order navigates to /orders/:orderId using the existing OrderDetails page",
+        "The existing OrderDetails page displays complete order information including all products"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Display a helpful message on the My Account page when the customer has no orders yet",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Empty state message appears when customer has zero orders",
+        "Message encourages customer to browse products",
+        "Includes link or button to navigate back to the product catalog"
       ]
     }
   ],
   "constraints": [
-    "Do not modify the backend order schema or API",
-    "Maintain consistency with existing OM FANCY blue-cyan gradient design theme",
-    "Use Space Grotesk typography as established in the current design"
+    "Do not modify the existing OrderDetails page at frontend/src/pages/OrderDetails.tsx",
+    "Do not modify backend order retrieval logic in backend/main.mo",
+    "Maintain the existing blue-cyan gradient theme and Space Grotesk typography",
+    "Preserve the existing admin Orders page functionality"
   ],
   "nonGoals": [
-    "Modifying order status or allowing order updates",
-    "Adding order search or filtering functionality",
-    "Implementing order history pagination",
-    "Adding email notifications for orders"
+    "Adding order cancellation or modification features",
+    "Implementing order filtering or search functionality",
+    "Adding email notifications for order updates",
+    "Creating separate order status update mechanisms"
   ],
   "imageRequirements": {
     "required": [],

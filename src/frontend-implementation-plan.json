@@ -1,58 +1,76 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Display order details view",
+  "title": "Add My Account page for customers to view orders",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Create user-facing order details page displaying comprehensive order information including ID, date, status, shipping details, and itemized products with totals",
+      "summary": "Create a new 'My Account' page route at /account that displays the authenticated customer's order history with order IDs, dates, statuses, and total amounts",
       "acceptanceCriteria": [
-        "Order details page is accessible from the order confirmation page and product catalog",
-        "Page displays all order information including shipping details and itemized products",
-        "Design follows the existing OM FANCY blue-cyan gradient theme with Space Grotesk typography",
-        "Order total is calculated and displayed correctly"
+        "New route /account exists and is accessible to authenticated customers",
+        "Page displays a list of all orders for the logged-in customer",
+        "Each order shows order ID, order date, order status, and total amount",
+        "Orders are sorted by date (most recent first)"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/OrderDetails.tsx",
+          "path": "frontend/src/pages/MyAccount.tsx",
           "operation": "create",
-          "description": "Create new OrderDetails page component that fetches and displays comprehensive order information using the getOrder backend method. Display order ID, customer name (from user profile), all ordered products with images from frontend/public/assets/generated/product-placeholder.dim_300x300.png fallback, quantities, individual prices, and calculated total. Apply blue-cyan gradient styling consistent with existing pages and use Space Grotesk typography. Include back navigation button."
+          "description": "Create My Account page component that fetches customer orders using the getMyOrders backend method from the authorization component. Display orders in a list with order ID, date (formatted from order ID), status placeholder (since status is not in backend Order type), and total amount. Sort orders by ID descending (most recent first). Use gradient styling consistent with the existing blue-cyan theme and Space Grotesk typography. Verify the authorization component's usage instructions before implementing."
         },
         {
           "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Add new route '/orders/:orderId' that renders the OrderDetails component. Register this route in the router configuration alongside existing routes for product catalog, checkout, order confirmation, and admin pages."
+          "description": "Add a new route for /account that renders the MyAccount page component. Place the route alongside existing routes, outside the AdminGuard protected section since this is a customer-facing page. Import the MyAccount component and wire it into the router configuration."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Add navigation from OrderConfirmation page to order details view",
+      "summary": "Add a 'My Account' navigation link in the header that is visible only to authenticated non-admin users",
       "acceptanceCriteria": [
-        "Link or button on order confirmation page navigates to order details",
-        "Navigation preserves order ID context"
+        "Navigation link labeled 'My Account' appears in the header Layout component",
+        "Link is only visible when user is authenticated",
+        "Link is hidden for admin users (admins have separate Orders section)",
+        "Clicking the link navigates to /account page"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/OrderConfirmation.tsx",
+          "path": "frontend/src/components/Layout.tsx",
           "operation": "modify",
-          "description": "Add a 'View Order Details' button or link that navigates to '/orders/{orderId}' route. Use the orderId from URL params to construct the navigation path. Style the button consistently with the existing checkout and gradient theme."
+          "description": "Add a 'My Account' navigation link in the header nav section. Position it between the existing navigation links and the cart button. Use useInternetIdentity hook to check authentication status and useIsAdmin hook to determine admin status. Show the link only when isAuthenticated is true and isAdmin is false. Link should navigate to /account route. Style consistently with existing nav links using the same gradient hover effects."
         }
       ]
     },
     {
       "id": "REQ-3",
-      "summary": "Extend admin orders page to allow viewing individual order details in expanded view or modal",
+      "summary": "From the My Account page, allow customers to click on any order to navigate to the existing order details page to view full order information including products ordered",
       "acceptanceCriteria": [
-        "Admin can click on any order in the list to view detailed information",
-        "Details view shows the same comprehensive order information as the user-facing page",
-        "UI clearly indicates which orders are clickable"
+        "Each order in the My Account list is clickable",
+        "Clicking an order navigates to /orders/:orderId using the existing OrderDetails page",
+        "The existing OrderDetails page displays complete order information including all products"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/AdminOrders.tsx",
+          "path": "frontend/src/pages/MyAccount.tsx",
           "operation": "modify",
-          "description": "Make each accordion item clickable to navigate to the OrderDetails page at '/orders/{orderId}'. Add visual indicators (hover states, cursor pointer) to show orders are clickable. Alternatively, add a 'View Full Details' button within each accordion item that navigates to the detailed view."
+          "description": "Make each order in the list clickable by wrapping order items in navigation elements or adding click handlers that navigate to /orders/:orderId route using the order's ID. Use appropriate cursor styling (cursor-pointer) and hover effects consistent with the gradient theme. The navigation should utilize the existing OrderDetails page without modifying it."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Display a helpful message on the My Account page when the customer has no orders yet",
+      "acceptanceCriteria": [
+        "Empty state message appears when customer has zero orders",
+        "Message encourages customer to browse products",
+        "Includes link or button to navigate back to the product catalog"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/MyAccount.tsx",
+          "operation": "modify",
+          "description": "Add conditional rendering to display an empty state when the orders array is empty. Show a friendly message encouraging the customer to browse products, styled with the gradient theme. Include a button or link that navigates to the root route (/) where the product catalog is located. Center the empty state message on the page for visual balance."
         }
       ]
     }

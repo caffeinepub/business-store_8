@@ -1,9 +1,9 @@
 {
   "frontend/src/index.css": "Global styles with modern vibrant blue-cyan OKLCH color system for light and dark modes, Space Grotesk typography with bold headings and custom animations.",
   "frontend/tailwind.config.js": "Tailwind configuration with vibrant blue-cyan color palette, Space Grotesk font family, enhanced shadows including glow effect, and fade-in animation.",
-  "frontend/src/App.tsx": "Main application component with TanStack Router setup including new '/orders/:orderId' route for order details page, theme provider, and routes for product catalog, checkout, order confirmation, order details, and admin pages with guards.",
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup including routes for product catalog, checkout, order confirmation, order details, My Account page, and admin pages with guards.",
   "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations including products, cart, orders, checkout, admin mutations, user profiles, and helper function to convert image bytes to blob URLs.",
-  "frontend/src/components/Layout.tsx": "Main layout wrapper with gradient-enhanced sticky header navigation featuring \"OM FANCY\" branding with glow effect, active route indicators, cart button, login button, conditional admin links, and footer with attribution",
+  "frontend/src/components/Layout.tsx": "Main layout wrapper with gradient-enhanced sticky header navigation featuring \"OM FANCY\" branding with glow effect, active route indicators, conditional \"My Account\" link for authenticated non-admin users, cart button, login button, conditional admin links, and footer with attribution.",
   "frontend/src/components/LoginButton.tsx": "Internet Identity login/logout button component with loading states and query cache clearing on logout.",
   "frontend/src/components/UserProfileSetup.tsx": "Modal dialog for first-time user profile setup that prompts authenticated users without profiles to enter their name.",
   "frontend/src/components/CartButton.tsx": "Shopping cart button with gradient badge for item count, enhanced border styling with hover effects, and improved visual prominence in the navigation bar.",
@@ -15,5 +15,6 @@
   "frontend/src/pages/AdminProducts.tsx": "Admin product management page with gradient headings, enhanced card styling with hover effects, improved form layouts with larger inputs, informational alert section, and modernized dialog interfaces for add/edit operations using correct imageBytes parameter name for mutations.",
   "frontend/src/pages/AdminOrders.tsx": "Admin orders page with gradient heading, accordion-based order display with enhanced card styling, icon badges, improved spacing, detailed order information presentation, and \"View Full Order Details\" button in each accordion item that navigates to the order details page.",
   "frontend/index.html": "HTML entry point with page title updated to \"OM FANCY\"",
-  "frontend/src/pages/OrderDetails.tsx": "New order details page displaying comprehensive order information including customer name from user profile, principal ID, itemized products with images and prices, and order summary with calculated totals, styled with blue-cyan gradient theme and Space Grotesk typography."
+  "frontend/src/pages/OrderDetails.tsx": "New order details page displaying comprehensive order information including customer name from user profile, principal ID, itemized products with images and prices, and order summary with calculated totals, styled with blue-cyan gradient theme and Space Grotesk typography.",
+  "frontend/src/pages/MyAccount.tsx": "New customer account page displaying order history with clickable order cards showing order ID, date, total, product thumbnails, and navigation to detailed order view; includes empty state with call-to-action to browse products."
 }
